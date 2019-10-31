@@ -3,19 +3,50 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5768066273C46977F5524F9B /* Pods_thanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */; };
 		F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDD92367D780002DDF34 /* AppDelegate.swift */; };
 		F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */; };
 		F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDD2367D780002DDF34 /* ViewController.swift */; };
 		F7CBBDE12367D780002DDF34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDDF2367D780002DDF34 /* Main.storyboard */; };
 		F7CBBDE32367D784002DDF34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDE22367D784002DDF34 /* Assets.xcassets */; };
 		F7CBBDE62367D784002DDF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDE42367D784002DDF34 /* LaunchScreen.storyboard */; };
+		F7CBBDEE2367FE75002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDED2367FE75002DDF34 /* secrets.plist */; };
+		F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDEF23689B6E002DDF34 /* Secret.swift */; };
+		F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDFC23689ECD002DDF34 /* thangerTests.swift */; };
+		F7CBBE0423689EDD002DDF34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7CBBDF423689E09002DDF34 /* XCTest.framework */; };
+		F7CBBE0523689EED002DDF34 /* SecretTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDF223689DC9002DDF34 /* SecretTestCase.swift */; };
+		F7CBBE092368D094002DDF34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE082368D094002DDF34 /* Constants.swift */; };
+		F7CBBE0A2368D0B3002DDF34 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE082368D094002DDF34 /* Constants.swift */; };
+		F7CBBE0C23690454002DDF34 /* SecretService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE0B23690454002DDF34 /* SecretService.swift */; };
+		F7CBBE0D23690454002DDF34 /* SecretService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE0B23690454002DDF34 /* SecretService.swift */; };
+		F7CBBE0E23690B10002DDF34 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDEF23689B6E002DDF34 /* Secret.swift */; };
+		F7CBBE11236A9893002DDF34 /* SecretRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE10236A9892002DDF34 /* SecretRequest.swift */; };
+		F7CBBE12236A9893002DDF34 /* SecretRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE10236A9892002DDF34 /* SecretRequest.swift */; };
+		F7CBBE14236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */; };
+		F7CBBE15236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */; };
+		F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */; };
+		F7CBBE18236AAEA9002DDF34 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */; };
+		F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */; };
+		F7CBBE1B236AB66D002DDF34 /* SecretWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F7CBBDFF23689ECD002DDF34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7CBBDCE2367D780002DDF34 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7CBBDD52367D780002DDF34;
+			remoteInfo = thanger;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2B902F50997B517A23BFD66B /* Pods-thanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger.debug.xcconfig"; path = "Target Support Files/Pods-thanger/Pods-thanger.debug.xcconfig"; sourceTree = "<group>"; };
+		362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CBBDD62367D780002DDF34 /* thanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CBBDD92367D780002DDF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +55,21 @@
 		F7CBBDE22367D784002DDF34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7CBBDE52367D784002DDF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7CBBDE72367D784002DDF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7CBBDED2367FE75002DDF34 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
+		F7CBBDEF23689B6E002DDF34 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		F7CBBDF223689DC9002DDF34 /* SecretTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTestCase.swift; sourceTree = "<group>"; };
+		F7CBBDF423689E09002DDF34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F7CBBDFA23689ECD002DDF34 /* thangerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = thangerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7CBBDFC23689ECD002DDF34 /* thangerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thangerTests.swift; sourceTree = "<group>"; };
+		F7CBBDFE23689ECD002DDF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7CBBE072368B961002DDF34 /* thanger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = thanger.entitlements; sourceTree = "<group>"; };
+		F7CBBE082368D094002DDF34 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F7CBBE0B23690454002DDF34 /* SecretService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretService.swift; sourceTree = "<group>"; };
+		F7CBBE10236A9892002DDF34 /* SecretRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretRequest.swift; sourceTree = "<group>"; };
+		F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretWrapper.swift; sourceTree = "<group>"; };
+		F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger.release.xcconfig"; path = "Target Support Files/Pods-thanger/Pods-thanger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +77,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5768066273C46977F5524F9B /* Pods_thanger.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7CBBDF723689ECD002DDF34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7CBBE0423689EDD002DDF34 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CCB56109BF39BA3F789C1BA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B902F50997B517A23BFD66B /* Pods-thanger.debug.xcconfig */,
+				F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D6DE6E70BAE786EF0AC07809 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7CBBDF423689E09002DDF34 /* XCTest.framework */,
+				362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F7CBBDCD2367D780002DDF34 = {
 			isa = PBXGroup;
 			children = (
 				F7CBBDD82367D780002DDF34 /* thanger */,
+				F7CBBDFB23689ECD002DDF34 /* thangerTests */,
 				F7CBBDD72367D780002DDF34 /* Products */,
+				CCB56109BF39BA3F789C1BA4 /* Pods */,
+				D6DE6E70BAE786EF0AC07809 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F7CBBDD62367D780002DDF34 /* thanger.app */,
+				F7CBBDFA23689ECD002DDF34 /* thangerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +133,10 @@
 		F7CBBDD82367D780002DDF34 /* thanger */ = {
 			isa = PBXGroup;
 			children = (
+				F7CBBE0F236A9879002DDF34 /* Requests */,
+				F7CBBE072368B961002DDF34 /* thanger.entitlements */,
+				F7CBBE062368A68D002DDF34 /* Services */,
+				F7CBBDF123689B7C002DDF34 /* Models */,
 				F7CBBDD92367D780002DDF34 /* AppDelegate.swift */,
 				F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */,
 				F7CBBDDD2367D780002DDF34 /* ViewController.swift */,
@@ -63,8 +144,47 @@
 				F7CBBDE22367D784002DDF34 /* Assets.xcassets */,
 				F7CBBDE42367D784002DDF34 /* LaunchScreen.storyboard */,
 				F7CBBDE72367D784002DDF34 /* Info.plist */,
+				F7CBBDED2367FE75002DDF34 /* secrets.plist */,
+				F7CBBE082368D094002DDF34 /* Constants.swift */,
+				F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */,
+				F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */,
+				F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */,
 			);
 			path = thanger;
+			sourceTree = "<group>";
+		};
+		F7CBBDF123689B7C002DDF34 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F7CBBDEF23689B6E002DDF34 /* Secret.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F7CBBDFB23689ECD002DDF34 /* thangerTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7CBBDF223689DC9002DDF34 /* SecretTestCase.swift */,
+				F7CBBDFC23689ECD002DDF34 /* thangerTests.swift */,
+				F7CBBDFE23689ECD002DDF34 /* Info.plist */,
+			);
+			path = thangerTests;
+			sourceTree = "<group>";
+		};
+		F7CBBE062368A68D002DDF34 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F7CBBE0B23690454002DDF34 /* SecretService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F7CBBE0F236A9879002DDF34 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				F7CBBE10236A9892002DDF34 /* SecretRequest.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +194,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7CBBDEA2367D785002DDF34 /* Build configuration list for PBXNativeTarget "thanger" */;
 			buildPhases = (
+				B9239A86F5FE4EB1344DEF82 /* [CP] Check Pods Manifest.lock */,
 				F7CBBDD22367D780002DDF34 /* Sources */,
 				F7CBBDD32367D780002DDF34 /* Frameworks */,
 				F7CBBDD42367D780002DDF34 /* Resources */,
+				8E782BFA9D147D8634E94F19 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -86,6 +208,24 @@
 			productName = thanger;
 			productReference = F7CBBDD62367D780002DDF34 /* thanger.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F7CBBDF923689ECD002DDF34 /* thangerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7CBBE0123689ECD002DDF34 /* Build configuration list for PBXNativeTarget "thangerTests" */;
+			buildPhases = (
+				F7CBBDF623689ECD002DDF34 /* Sources */,
+				F7CBBDF723689ECD002DDF34 /* Frameworks */,
+				F7CBBDF823689ECD002DDF34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7CBBE0023689ECD002DDF34 /* PBXTargetDependency */,
+			);
+			name = thangerTests;
+			productName = thangerTests;
+			productReference = F7CBBDFA23689ECD002DDF34 /* thangerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -99,6 +239,10 @@
 				TargetAttributes = {
 					F7CBBDD52367D780002DDF34 = {
 						CreatedOnToolsVersion = 11.1;
+					};
+					F7CBBDF923689ECD002DDF34 = {
+						CreatedOnToolsVersion = 11.1;
+						TestTargetID = F7CBBDD52367D780002DDF34;
 					};
 				};
 			};
@@ -116,6 +260,7 @@
 			projectRoot = "";
 			targets = (
 				F7CBBDD52367D780002DDF34 /* thanger */,
+				F7CBBDF923689ECD002DDF34 /* thangerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -125,26 +270,107 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CBBDEE2367FE75002DDF34 /* secrets.plist in Resources */,
 				F7CBBDE62367D784002DDF34 /* LaunchScreen.storyboard in Resources */,
 				F7CBBDE32367D784002DDF34 /* Assets.xcassets in Resources */,
 				F7CBBDE12367D780002DDF34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F7CBBDF823689ECD002DDF34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E782BFA9D147D8634E94F19 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-thanger/Pods-thanger-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-thanger/Pods-thanger-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-thanger/Pods-thanger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9239A86F5FE4EB1344DEF82 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-thanger-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7CBBDD22367D780002DDF34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CBBE092368D094002DDF34 /* Constants.swift in Sources */,
 				F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */,
+				F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */,
+				F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
+				F7CBBE0C23690454002DDF34 /* SecretService.swift in Sources */,
 				F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */,
+				F7CBBE14236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
+				F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */,
 				F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */,
+				F7CBBE11236A9893002DDF34 /* SecretRequest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7CBBDF623689ECD002DDF34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7CBBE1B236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
+				F7CBBE18236AAEA9002DDF34 /* ServiceError.swift in Sources */,
+				F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */,
+				F7CBBE0E23690B10002DDF34 /* Secret.swift in Sources */,
+				F7CBBE0D23690454002DDF34 /* SecretService.swift in Sources */,
+				F7CBBE15236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
+				F7CBBE12236A9893002DDF34 /* SecretRequest.swift in Sources */,
+				F7CBBE0523689EED002DDF34 /* SecretTestCase.swift in Sources */,
+				F7CBBE0A2368D0B3002DDF34 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7CBBE0023689ECD002DDF34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7CBBDD52367D780002DDF34 /* thanger */;
+			targetProxy = F7CBBDFF23689ECD002DDF34 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F7CBBDDF2367D780002DDF34 /* Main.storyboard */ = {
@@ -282,8 +508,10 @@
 		};
 		F7CBBDEB2367D785002DDF34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B902F50997B517A23BFD66B /* Pods-thanger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = thanger/thanger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M96UWZCD49;
 				INFOPLIST_FILE = thanger/Info.plist;
@@ -300,8 +528,10 @@
 		};
 		F7CBBDEC2367D785002DDF34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = thanger/thanger.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M96UWZCD49;
 				INFOPLIST_FILE = thanger/Info.plist;
@@ -313,6 +543,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F7CBBE0223689ECD002DDF34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M96UWZCD49;
+				INFOPLIST_FILE = thangerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluoma.thangerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thanger.app/thanger";
+			};
+			name = Debug;
+		};
+		F7CBBE0323689ECD002DDF34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M96UWZCD49;
+				INFOPLIST_FILE = thangerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluoma.thangerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/thanger.app/thanger";
 			};
 			name = Release;
 		};
@@ -333,6 +603,15 @@
 			buildConfigurations = (
 				F7CBBDEB2367D785002DDF34 /* Debug */,
 				F7CBBDEC2367D785002DDF34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7CBBE0123689ECD002DDF34 /* Build configuration list for PBXNativeTarget "thangerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7CBBE0223689ECD002DDF34 /* Debug */,
+				F7CBBE0323689ECD002DDF34 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

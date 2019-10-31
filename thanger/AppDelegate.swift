@@ -8,10 +8,14 @@
 
 import UIKit
 
+let clientId = "365104d205e7a9bb37ce6d185c4212b8c91cfaf4e499ef5b47a573c05e43c8e9"
+let clientSecret = "0e242e11dfe27fd14cd80200a256fcdeac0813112487c734da64e8d65c664773"
+let completionDeepLink = "com.bluoma.thanger://oauth/verification_complete"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
