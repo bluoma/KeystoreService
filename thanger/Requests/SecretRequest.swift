@@ -17,6 +17,11 @@ enum SecretRequestMethod: String {
 
 class SecretRequest<Keystore: SecretWrapper> {
     
+    lazy var keystore: Keystore = {
+        let newKestore = Keystore(withService: service, accessGroup: accessGroup)
+        return newKestore
+    } ()
+    
     let secretType: SecretType
     let secretKey: String
     let secretVal: String
@@ -92,7 +97,6 @@ class SecretRequest<Keystore: SecretWrapper> {
     func load(completion: ((Secret?, Error?) -> Void)) {
         dlog("load")
 
-        let keystore = Keystore(withService: service, accessGroup: accessGroup)
         var data: Data?
         let loadStatus = keystore.load(key: secretKey, value: &data)
         let status = OSStatus(loadStatus)
@@ -128,7 +132,6 @@ class SecretRequest<Keystore: SecretWrapper> {
     //non-escaping closure, so this executes synchonously
     func store(completion: ((Secret?, Error?) -> Void)) {
         dlog("store")
-        let keystore = Keystore(withService: service, accessGroup: accessGroup)
 
         let secretToStore = Secret(secretKey: secretKey, secretVal: secretVal, secretType: secretType)
         
@@ -157,8 +160,6 @@ class SecretRequest<Keystore: SecretWrapper> {
     func delete(completion: ((Secret?, Error?) -> Void)) {
         dlog("delete")
         
-        let keystore = Keystore(withService: service, accessGroup: accessGroup)
-
         let deleteStatus = keystore.delete(key: secretKey)
         let status = OSStatus(deleteStatus)
         switch status {
@@ -184,8 +185,6 @@ class SecretRequest<Keystore: SecretWrapper> {
     func clear(completion: ((Secret?, Error?) -> Void)) {
         dlog("clear")
         
-        let keystore = Keystore(withService: service, accessGroup: accessGroup)
-
         let deleteStatus = keystore.clear()
         let status = OSStatus(deleteStatus)
         switch status {
