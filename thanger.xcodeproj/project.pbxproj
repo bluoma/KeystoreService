@@ -14,7 +14,6 @@
 		F7CBBDE12367D780002DDF34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDDF2367D780002DDF34 /* Main.storyboard */; };
 		F7CBBDE32367D784002DDF34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDE22367D784002DDF34 /* Assets.xcassets */; };
 		F7CBBDE62367D784002DDF34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDE42367D784002DDF34 /* LaunchScreen.storyboard */; };
-		F7CBBDEE2367FE75002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBDED2367FE75002DDF34 /* secrets.plist */; };
 		F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDEF23689B6E002DDF34 /* Secret.swift */; };
 		F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDFC23689ECD002DDF34 /* thangerTests.swift */; };
 		F7CBBE0423689EDD002DDF34 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7CBBDF423689E09002DDF34 /* XCTest.framework */; };
@@ -32,6 +31,10 @@
 		F7CBBE18236AAEA9002DDF34 /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */; };
 		F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */; };
 		F7CBBE1B236AB66D002DDF34 /* SecretWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */; };
+		F7CBBE1D236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */; };
+		F7CBBE1E236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */; };
+		F7CBBE23236CAB48002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBE22236CAB48002DDF34 /* secrets.plist */; };
+		F7CBBE24236CAB48002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBE22236CAB48002DDF34 /* secrets.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +58,6 @@
 		F7CBBDE22367D784002DDF34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F7CBBDE52367D784002DDF34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F7CBBDE72367D784002DDF34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F7CBBDED2367FE75002DDF34 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
 		F7CBBDEF23689B6E002DDF34 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		F7CBBDF223689DC9002DDF34 /* SecretTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretTestCase.swift; sourceTree = "<group>"; };
 		F7CBBDF423689E09002DDF34 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -69,6 +71,8 @@
 		F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretWrapper.swift; sourceTree = "<group>"; };
+		F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsWrapper.swift; sourceTree = "<group>"; };
+		F7CBBE22236CAB48002DDF34 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
 		F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger.release.xcconfig"; path = "Target Support Files/Pods-thanger/Pods-thanger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				F7CBBE0F236A9879002DDF34 /* Requests */,
-				F7CBBE072368B961002DDF34 /* thanger.entitlements */,
 				F7CBBE062368A68D002DDF34 /* Services */,
 				F7CBBDF123689B7C002DDF34 /* Models */,
 				F7CBBDD92367D780002DDF34 /* AppDelegate.swift */,
@@ -144,11 +147,13 @@
 				F7CBBDE22367D784002DDF34 /* Assets.xcassets */,
 				F7CBBDE42367D784002DDF34 /* LaunchScreen.storyboard */,
 				F7CBBDE72367D784002DDF34 /* Info.plist */,
-				F7CBBDED2367FE75002DDF34 /* secrets.plist */,
+				F7CBBE072368B961002DDF34 /* thanger.entitlements */,
 				F7CBBE082368D094002DDF34 /* Constants.swift */,
+				F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */,
 				F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */,
 				F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */,
 				F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */,
+				F7CBBE22236CAB48002DDF34 /* secrets.plist */,
 			);
 			path = thanger;
 			sourceTree = "<group>";
@@ -270,7 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7CBBDEE2367FE75002DDF34 /* secrets.plist in Resources */,
+				F7CBBE23236CAB48002DDF34 /* secrets.plist in Resources */,
 				F7CBBDE62367D784002DDF34 /* LaunchScreen.storyboard in Resources */,
 				F7CBBDE32367D784002DDF34 /* Assets.xcassets in Resources */,
 				F7CBBDE12367D780002DDF34 /* Main.storyboard in Resources */,
@@ -281,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CBBE24236CAB48002DDF34 /* secrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +344,7 @@
 				F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */,
 				F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
 				F7CBBE0C23690454002DDF34 /* SecretService.swift in Sources */,
+				F7CBBE1D236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
 				F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */,
 				F7CBBE14236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
 				F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */,
@@ -357,6 +364,7 @@
 				F7CBBE0D23690454002DDF34 /* SecretService.swift in Sources */,
 				F7CBBE15236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
 				F7CBBE12236A9893002DDF34 /* SecretRequest.swift in Sources */,
+				F7CBBE1E236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
 				F7CBBE0523689EED002DDF34 /* SecretTestCase.swift in Sources */,
 				F7CBBE0A2368D0B3002DDF34 /* Constants.swift in Sources */,
 			);

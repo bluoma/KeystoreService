@@ -8,20 +8,68 @@
 
 import UIKit
 
-let clientId = "365104d205e7a9bb37ce6d185c4212b8c91cfaf4e499ef5b47a573c05e43c8e9"
-let clientSecret = "0e242e11dfe27fd14cd80200a256fcdeac0813112487c734da64e8d65c664773"
-let completionDeepLink = "com.bluoma.thanger://oauth/verification_complete"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let secretService = SecretService()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let status = storeSecrets()
+        dlog("store secrets status: \(status)")
+        if status < 0 {
+            return false
+        }
+        
+        
         return true
     }
 
+    private func storeSecrets() -> Int {
+        var status = -1
+        
+        let secretsPlist = readPropertyList("secrets")
+        guard let coinbaseDict = secretsPlist["Coinbase"] as? [String: AnyObject],
+            let clientId = coinbaseDict["CoinbaseClientId"] as? String,
+            let clientSecret = coinbaseDict["CoinbaseClientSecret"] as? String else {
+                dlog("error getting coinbase client strings")
+                return status
+        }
+        
+        dlog("secrets.plist: \(secretsPlist)")
+        
+        let clientIdSecret = Secret(secretKey: SecretKeys.coinbaseClientIdKey, secretVal: clientId, secretType: .clientId)
+        let clientSecretSecret = Secret(secretKey: SecretKeys.coinbaseClientSecretKey, secretVal: clientSecret, secretType: .clientSecret)
+        
+        secretService.storeSecret(clientIdSecret) { (secret: Secret?, error: Error?) in
+            
+            if let error = error {
+                dlog("error storing clientId secret: \(error)")
+                status = -2
+            }
+            else {
+                dlog("stored clientId secret: \(String(describing: secret))")
+                status = 2
+            }
+        }
+        
+        secretService.storeSecret(clientSecretSecret) { (secret: Secret?, error: Error?) in
+            
+            if let error = error {
+                dlog("error storing clientSecret secret: \(error)")
+                status = -3
+            }
+            else {
+                dlog("stored clientSecret secret: \(String(describing: secret))")
+                status = 3
+            }
+        }
+        
+        return status
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

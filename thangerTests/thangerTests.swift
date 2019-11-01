@@ -22,7 +22,6 @@ class thangerTests: XCTestCase {
 
     func testStoreAccessToken() {
         
-
         let secret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "abcdefghijklmnopqrstuvwxyz", secretType: .accessToken)
         
         secretService.storeSecret(secret)

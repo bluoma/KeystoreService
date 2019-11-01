@@ -30,6 +30,27 @@ public func dlog(_ message: String, _ filePath: String = #file, _ functionName: 
     
 }
 
+public func readPropertyList(_ filename: String) -> [String: AnyObject] {
+    var propertyListFormat =  PropertyListSerialization.PropertyListFormat.xml
+    var plistDict: [String: AnyObject] = [:]
+    guard let plistPath: String = Bundle.main.path(forResource: filename, ofType: "plist"),
+        let plistXML = FileManager.default.contents(atPath: plistPath) else {
+            dlog("Error reading plist: \(filename)")
+        return plistDict
+    }
+    
+    do {
+        if let plistObj = try PropertyListSerialization.propertyList(from: plistXML, options: .mutableContainersAndLeaves, format: &propertyListFormat) as? [String:AnyObject] {
+            plistDict = plistObj
+        }
+
+    } catch {
+        dlog("Error reading plist: \(error)")
+    }
+    return plistDict
+}
+
 let appPrefix = "M96UWZCD49"
 let sharedKeychainService = "M96UWZCD49.com.bluoma.thanger.shared.service"
 let sharedKeychainGroup = "M96UWZCD49.com.bluoma.thanger.shared"
+let sharedAppGroup = "group.com.bluoma.thanger"

@@ -72,6 +72,7 @@ class SecretRequest<Keystore: SecretWrapper> {
     
     //non-escaping closure, so this executes synchonously
     func send(completion: ((Secret?, Error?) -> Void)) {
+        dlog("currentThread: \(Thread.current)")
         
         switch method {
             
