@@ -14,12 +14,11 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
 
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
      
-        /*
-        request.params[Constants.theMovieDbApiKeyName] = Constants.theMovieDbApiKey
-        if request.requiresSession, let sessionId = Constants.sessionId {
-            request.params[Constants.theMovieDbSessionKeyName] = sessionId
+        
+        if request.requiresSession {
+            //add oauth access token to Authorization header
         }
-        */
+        
         return super.buildUrl(withRequest: request)
     }
     
@@ -47,7 +46,28 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
                 catch {
                     dlog(String(describing: error))
                 }
-                
+            case "application/x-www-form-urlencoded":
+                var bodyArray: [String] = []
+                for (key, val) in request.contentBody {
+                    let keyVal = "\(key)=\(val)"
+                    bodyArray.append(keyVal)
+                }
+                var bodyString = bodyArray.joined(separator: "&")
+                dlog("bodyStringNotEncoded: \(bodyString)")
+                var allowed = CharacterSet.alphanumerics
+                allowed.insert(charactersIn: "-._~") // as per RFC 3986
+                if let percentEncoded = bodyString.addingPercentEncoding(withAllowedCharacters: allowed) {
+                    bodyString = percentEncoded
+                }
+                dlog("bodyStringEncoded: \(bodyString)")
+                if let data = bodyString.data(using: .utf8) {
+                    theUrlRequest.httpBody = data
+                    urlRequest = theUrlRequest
+                    headers["Content-Type"] = "application/x-www-form-urlencoded"
+                }
+                else {
+                    assert(false, "bad post body: \(bodyString)")
+                }
             default:
                 dlog("unsupported contentType: \(request.contentType)")
             }
@@ -67,7 +87,7 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
     
     
     override var description: String {
-        return CoinbaseOauth2Client.staticName
+        return Self.staticName
     }
     
     override class var staticName: String {

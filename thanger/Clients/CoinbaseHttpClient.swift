@@ -30,12 +30,6 @@ class CoinbaseHttpClient: RemoteClient {
 
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
      
-        /*
-        request.params[Constants.theMovieDbApiKeyName] = Constants.theMovieDbApiKey
-        if request.requiresSession, let sessionId = Constants.sessionId {
-            request.params[Constants.theMovieDbSessionKeyName] = sessionId
-        }
-        */
         return super.buildUrl(withRequest: request)
     }
     

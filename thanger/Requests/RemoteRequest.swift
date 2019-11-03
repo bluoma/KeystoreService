@@ -12,7 +12,7 @@ import Foundation
 typealias RequestSuccessBlock = (Data?, [AnyHashable: Any]) -> Void
 typealias RequestFailureBlock = (Error) -> Void
 
-class RemoteRequest: Hashable, CustomStringConvertible {
+class RemoteRequest: RequestProtocol, Hashable, CustomStringConvertible {
     
     let requestId: String = UUID().uuidString
     var method: String = ""
@@ -22,7 +22,7 @@ class RemoteRequest: Hashable, CustomStringConvertible {
     var contentType: String = ""
     var contentBody: [String: String] = [:]
     var requiresSession: Bool = false
-    
+    var isTransportable: Bool = true
     var successBlock: RequestSuccessBlock?
     var failureBlock: RequestFailureBlock?
     

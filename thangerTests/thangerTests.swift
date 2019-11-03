@@ -22,7 +22,7 @@ class thangerTests: XCTestCase {
 
     func testStoreAccessToken() {
         
-        let secret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "abcdefghijklmnopqrstuvwxyz", secretType: .accessToken)
+        let secret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "12134567890", secretType: .accessToken)
         
         secretService.storeSecret(secret)
         { (secret: Secret?, error: Error?) in
@@ -332,6 +332,21 @@ class thangerTests: XCTestCase {
         
         waitForExpectations(timeout: 5.0, handler: nil)
         
+    }
+    
+    func testAuthRequest() {
+        
+        //https://www.coinbase.com/v2/oauth/authorize?scope=wallet:user:read,wallet:user:email,wallet:accounts:read&redirect_uri=thanger://com.bluoma.thanger/oauth/redir&client_secret=34cs&client_id=24ci&response_type=code&state=93C58288-82E7-4308-915B-3EC280195755
+        let service = UserAccountService()
+        
+        if let urlRequest = service.createAuthorizationCodeRequest() {
+            dlog("url: \(String(describing: urlRequest.url))")
+            dlog("host: \(String(describing: urlRequest.url?.host))")
+
+        }
+        else {
+            XCTFail("no urlRequest")
+        }
     }
     
     func testPerformanceExample() {

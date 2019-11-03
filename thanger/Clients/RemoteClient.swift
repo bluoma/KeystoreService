@@ -60,8 +60,7 @@ class RemoteClient: CustomStringConvertible {
             
             var items: [URLQueryItem] = []
             for (name, value) in request.params {
-                let percentEncodedValue = value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-                let item: URLQueryItem = URLQueryItem(name: name, value: percentEncodedValue)
+                let item: URLQueryItem = URLQueryItem(name: name, value: value)
                 items.append(item)
             }
             components.queryItems = items

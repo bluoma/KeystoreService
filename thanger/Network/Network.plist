@@ -13,6 +13,14 @@
     <array>
         <dict>
             <key>client</key>
+            <string>CoinbaseOauth2WebClient</string>
+            <key>scheme</key>
+            <string>https</string>
+            <key>host</key>
+            <string>www.coinbase.com</string>
+        </dict>
+        <dict>
+            <key>client</key>
             <string>CoinbaseOauth2Client</string>
             <key>scheme</key>
             <string>https</string>
@@ -46,6 +54,8 @@
         <string>CoinbaseHttpClient</string>
         <key>UserAccountRequest</key>
         <string>CoinbaseOauth2Client</string>
+        <key>UserAuthRequest</key>
+        <string>CoinbaseOauth2WebClient</string>
     </dict>
     </dict>
 </plist>

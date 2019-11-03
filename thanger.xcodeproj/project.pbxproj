@@ -44,6 +44,16 @@
 		F7671BBF236D63D600C0470D /* CurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */; };
 		F7671BC1236DF91400C0470D /* DigitalAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC0236DF91400C0470D /* DigitalAsset.swift */; };
 		F7671BC2236DF91500C0470D /* DigitalAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC0236DF91400C0470D /* DigitalAsset.swift */; };
+		F7671BC4236E800200C0470D /* UserAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC3236E800200C0470D /* UserAccountRequest.swift */; };
+		F7671BC5236E800200C0470D /* UserAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC3236E800200C0470D /* UserAccountRequest.swift */; };
+		F7671BD1236EAA9100C0470D /* UserAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD0236EAA9100C0470D /* UserAccountService.swift */; };
+		F7671BD2236EAA9100C0470D /* UserAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD0236EAA9100C0470D /* UserAccountService.swift */; };
+		F7671BD4236EADC100C0470D /* UserAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD3236EADC100C0470D /* UserAuthRequest.swift */; };
+		F7671BD5236EADC100C0470D /* UserAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD3236EADC100C0470D /* UserAuthRequest.swift */; };
+		F7671BD7236EAED100C0470D /* CoinbaseOauth2WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */; };
+		F7671BD8236EAED100C0470D /* CoinbaseOauth2WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */; };
+		F7671BDA236F748600C0470D /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD9236F748600C0470D /* RequestProtocol.swift */; };
+		F7671BDB236F748600C0470D /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD9236F748600C0470D /* RequestProtocol.swift */; };
 		F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDD92367D780002DDF34 /* AppDelegate.swift */; };
 		F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */; };
 		F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDD2367D780002DDF34 /* ViewController.swift */; };
@@ -113,6 +123,11 @@
 		F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRequest.swift; sourceTree = "<group>"; };
 		F7671BBC236D5FCB00C0470D /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
 		F7671BC0236DF91400C0470D /* DigitalAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalAsset.swift; sourceTree = "<group>"; };
+		F7671BC3236E800200C0470D /* UserAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountRequest.swift; sourceTree = "<group>"; };
+		F7671BD0236EAA9100C0470D /* UserAccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccountService.swift; sourceTree = "<group>"; };
+		F7671BD3236EADC100C0470D /* UserAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthRequest.swift; sourceTree = "<group>"; };
+		F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinbaseOauth2WebClient.swift; sourceTree = "<group>"; };
+		F7671BD9236F748600C0470D /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
 		F7CBBDD62367D780002DDF34 /* thanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CBBDD92367D780002DDF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +208,7 @@
 				F7671BA7236D423600C0470D /* CoinbaseOauth2Client.swift */,
 				F7671B8E236D408100C0470D /* RemoteClient.swift */,
 				F7671B90236D408100C0470D /* WSClient.swift */,
+				F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -293,6 +309,7 @@
 				F7CBBE0B23690454002DDF34 /* SecretService.swift */,
 				F7671BB1236D49A900C0470D /* PriceService.swift */,
 				F7671BBC236D5FCB00C0470D /* CurrencyService.swift */,
+				F7671BD0236EAA9100C0470D /* UserAccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -304,6 +321,9 @@
 				F7CBBE10236A9892002DDF34 /* SecretRequest.swift */,
 				F7671B88236D0A2200C0470D /* PriceRequest.swift */,
 				F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */,
+				F7671BC3236E800200C0470D /* UserAccountRequest.swift */,
+				F7671BD3236EADC100C0470D /* UserAuthRequest.swift */,
+				F7671BD9236F748600C0470D /* RequestProtocol.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -498,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7671BD7236EAED100C0470D /* CoinbaseOauth2WebClient.swift in Sources */,
 				F7CBBE26236CD745002DDF34 /* Currency.swift in Sources */,
 				F7671B9F236D412C00C0470D /* WSStarscreamTransport.swift in Sources */,
 				F7FCBEC1236CFFF900E70A75 /* Price.swift in Sources */,
@@ -511,11 +532,14 @@
 				F7671BB5236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
 				F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */,
 				F7671BBB236D5E2E00C0470D /* CurrencyRequest.swift in Sources */,
+				F7671BC4236E800200C0470D /* UserAccountRequest.swift in Sources */,
 				F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */,
 				F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
+				F7671BD1236EAA9100C0470D /* UserAccountService.swift in Sources */,
 				F7CBBE0C23690454002DDF34 /* SecretService.swift in Sources */,
 				F7CBBE29236CDA7A002DDF34 /* ExchangeRates.swift in Sources */,
 				F7CBBE1D236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
+				F7671BD4236EADC100C0470D /* UserAuthRequest.swift in Sources */,
 				F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */,
 				F7671BA1236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
 				F7671BA5236D412C00C0470D /* WSNativeTransport.swift in Sources */,
@@ -528,6 +552,7 @@
 				F7671BC1236DF91400C0470D /* DigitalAsset.swift in Sources */,
 				F7671B89236D0A2200C0470D /* PriceRequest.swift in Sources */,
 				F7CBBE11236A9893002DDF34 /* SecretRequest.swift in Sources */,
+				F7671BDA236F748600C0470D /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +562,7 @@
 			files = (
 				F7CBBE1B236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
 				F7671BB6236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
+				F7671BC5236E800200C0470D /* UserAccountRequest.swift in Sources */,
 				F7671BA2236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
 				F7671BAE236D436700C0470D /* NetworkPlatform.swift in Sources */,
 				F7671B92236D408100C0470D /* RemoteClient.swift in Sources */,
@@ -544,16 +570,19 @@
 				F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */,
 				F7CBBE0E23690B10002DDF34 /* Secret.swift in Sources */,
 				F7CBBE2A236CDA7A002DDF34 /* ExchangeRates.swift in Sources */,
+				F7671BD5236EADC100C0470D /* UserAuthRequest.swift in Sources */,
 				F7671BA9236D423600C0470D /* CoinbaseOauth2Client.swift in Sources */,
 				F7671BC2236DF91500C0470D /* DigitalAsset.swift in Sources */,
 				F7671BB3236D49A900C0470D /* PriceService.swift in Sources */,
 				F7671BBE236D632700C0470D /* CurrencyService.swift in Sources */,
+				F7671BDB236F748600C0470D /* RequestProtocol.swift in Sources */,
 				F7671BBF236D63D600C0470D /* CurrencyRequest.swift in Sources */,
 				F7CBBE0D23690454002DDF34 /* SecretService.swift in Sources */,
 				F7671BA0236D412C00C0470D /* WSStarscreamTransport.swift in Sources */,
 				F7671BB9236D591E00C0470D /* PriceRequest.swift in Sources */,
 				F7671BA4236D412C00C0470D /* WSMessage.swift in Sources */,
 				F7CBBE15236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
+				F7671BD2236EAA9100C0470D /* UserAccountService.swift in Sources */,
 				F7671B9E236D412C00C0470D /* RemoteTransport.swift in Sources */,
 				F7CBBE27236CD745002DDF34 /* Currency.swift in Sources */,
 				F7671B96236D408100C0470D /* WSClient.swift in Sources */,
@@ -561,6 +590,7 @@
 				F7CBBE12236A9893002DDF34 /* SecretRequest.swift in Sources */,
 				F7CBBE1E236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
 				F7671B8C236D0A8A00C0470D /* RemoteRequest.swift in Sources */,
+				F7671BD8236EAED100C0470D /* CoinbaseOauth2WebClient.swift in Sources */,
 				F7CBBE0523689EED002DDF34 /* SecretTestCase.swift in Sources */,
 				F7671BA6236D412C00C0470D /* WSNativeTransport.swift in Sources */,
 				F7CBBE0A2368D0B3002DDF34 /* Constants.swift in Sources */,

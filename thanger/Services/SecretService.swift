@@ -19,7 +19,12 @@ class SecretService {
             withSecret: searchSecret)
         
         dispatchQueue.sync {
-            secretRequest.send(completion: completion)
+            if let result: (s: Secret?, e: Error?) = secretRequest.send() as? (Secret?, Error?) {
+                completion(result.s, result.e)
+            }
+            else {
+                preconditionFailure("bad return value from SecretRequest.send")
+            }
         }
     }
     
@@ -29,7 +34,12 @@ class SecretService {
         let secretRequest: SecretRequest<KeychainWrapper> = SecretRequest.storeSecretRequest(withSecret: secret)
         
         dispatchQueue.sync {
-            secretRequest.send(completion: completion)
+            if let result: (s: Secret?, e: Error?) = secretRequest.send() as? (Secret?, Error?) {
+                completion(result.s, result.e)
+            }
+            else {
+                preconditionFailure("bad return value from SecretRequest.send")
+            }
         }
     }
     
@@ -39,17 +49,27 @@ class SecretService {
         let secretRequest: SecretRequest<KeychainWrapper> = SecretRequest.deleteSecretRequest(withSecret: secret)
         
         dispatchQueue.sync {
-            secretRequest.send(completion: completion)
+            if let result: (s: Secret?, e: Error?) = secretRequest.send() as? (Secret?, Error?) {
+                completion(result.s, result.e)
+            }
+            else {
+                preconditionFailure("bad return value from SecretRequest.send")
+            }
         }
     }
     
-    //non-escaping closure, executes synchonrously
+    //non-escaping closure, executes synchronrously
     func clearAllSecrets(completion: ((Secret?, Error?) -> Void)) {
                  
         let secretRequest: SecretRequest<KeychainWrapper> = SecretRequest.deleteAllSecretsRequest()
         
         dispatchQueue.sync {
-            secretRequest.send(completion: completion)
+           if let result: (s: Secret?, e: Error?) = secretRequest.send() as? (Secret?, Error?) {
+                completion(result.s, result.e)
+            }
+            else {
+                preconditionFailure("bad return value from SecretRequest.send")
+            }
         }
     }
     

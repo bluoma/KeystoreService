@@ -15,7 +15,7 @@ enum SecretRequestMethod: String {
     case clear = "clear"
 }
 
-class SecretRequest<Keystore: SecretWrapper> {
+class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
     
     lazy var keystore: Keystore = {
         let newKestore = Keystore(withService: service, accessGroup: accessGroup)
@@ -28,6 +28,7 @@ class SecretRequest<Keystore: SecretWrapper> {
     let service: String
     let accessGroup: String?
     let method: SecretRequestMethod
+    var isTransportable: Bool = false
     
     init(withMethod method: SecretRequestMethod, secretType: SecretType, secretKey: String, service: String, accessGroup: String? = nil) {
         self.method = method
@@ -75,28 +76,11 @@ class SecretRequest<Keystore: SecretWrapper> {
         return request
     }
     
-    //non-escaping closure, so this executes synchonously
-    func send(completion: ((Secret?, Error?) -> Void)) {
-        dlog("currentThread: \(Thread.current)")
-        
-        switch method {
-            
-        case .load:
-            load(completion: completion)
-        case .store:
-            store(completion: completion)
-        case .delete:
-            delete(completion: completion)
-        case .clear:
-            clear(completion: completion)
-        }
-        
-    }
-    
-    //non-escaping closure, so this executes synchonously
-    func load(completion: ((Secret?, Error?) -> Void)) {
+    //methods that don't take a closure argument, but return a tuple
+    func load() -> (Secret?, Error?) {
         dlog("load")
-
+        
+        var result: (s: Secret?, e: Error?)
         var data: Data?
         let loadStatus = keystore.load(key: secretKey, value: &data)
         let status = OSStatus(loadStatus)
@@ -108,31 +92,31 @@ class SecretRequest<Keystore: SecretWrapper> {
                 let decoder = JSONDecoder()
                 if let data = data {
                     let secret = try decoder.decode(Secret.self, from: data)
-                    completion(secret, nil)
+                    result.s = secret
                 }
                 else {
                     let error = ServiceError(type: .dataNotFound, code: Int(errSecDataNotAvailable), msg: "data not found in keystore item")
                     dlog("keystore error: \(error)")
-                    completion(nil, error)
+                    result.e = error
                 }
             }
             catch {
                 dlog("error decoding data: \(error)")
-                completion(nil, error)
+                result.e = error
             }
             
         default:
             let msg = keystore.messageForStatus(status: loadStatus)
             let error = ServiceError(type: .invalidData, code: loadStatus, msg: msg)
             dlog("keystore error: \(error)")
-            completion(nil, error)
+            result.e = error
         }
+        return result
     }
     
-    //non-escaping closure, so this executes synchonously
-    func store(completion: ((Secret?, Error?) -> Void)) {
+    func store() -> (Secret?, Error?) {
         dlog("store")
-
+        var result: (s: Secret?, e: Error?)
         let secretToStore = Secret(secretKey: secretKey, secretVal: secretVal, secretType: secretType)
         
         do {
@@ -141,68 +125,88 @@ class SecretRequest<Keystore: SecretWrapper> {
             let storeStatus = keystore.store(key: secretKey, value: jsonData)
             let status = OSStatus(storeStatus)
             if status == errSecSuccess {
-                completion(secretToStore, nil)
+                result.s = secretToStore
             }
             else {
                 let msg = keystore.messageForStatus(status: storeStatus)
                 let error = ServiceError(type: .invalidData, code: storeStatus, msg: msg)
                 dlog("keystore error: \(error)")
-                completion(nil, error)
+                result.e = error
             }
         }
         catch {
             dlog("encoding error: \(error)")
-            completion(nil, error)
+            result.e = error
         }
+        
+        return result
     }
     
-    //non-escaping closure, so this executes synchonously
-    func delete(completion: ((Secret?, Error?) -> Void)) {
+    func delete() -> (Secret?, Error?) {
         dlog("delete")
-        
+        var result: (s: Secret?, e: Error?)
         let deleteStatus = keystore.delete(key: secretKey)
         let status = OSStatus(deleteStatus)
         switch status {
          
         case errSecSuccess:
-            completion(nil, nil)
+            result.s = nil
+            result.e = nil
             
         case errSecItemNotFound:
             let msg = keystore.messageForStatus(status: deleteStatus)
             let error = ServiceError(type: .dataKeyNotFound, code: deleteStatus, msg: msg)
             dlog("key not found: \(error)")
-            completion(nil, error)
+            result.e = error
             
         default:
             let msg = keystore.messageForStatus(status: deleteStatus)
             let error = ServiceError(type: .invalidData, code: deleteStatus, msg: msg)
             dlog("keystore error: \(error)")
-            completion(nil, error)
+            result.e = error
         }
+        return result
     }
     
-    //non-escaping closure, so this executes synchonously
-    func clear(completion: ((Secret?, Error?) -> Void)) {
+    func clear() -> (Secret?, Error?) {
         dlog("clear")
-        
+        var result: (s: Secret?, e: Error?)
         let deleteStatus = keystore.clear()
         let status = OSStatus(deleteStatus)
         switch status {
          
         case errSecSuccess:
-            completion(nil, nil)
+            result.s = nil
+            result.e = nil
             
         case errSecItemNotFound:
             let msg = keystore.messageForStatus(status: deleteStatus)
             let error = ServiceError(type: .dataKeyNotFound, code: deleteStatus, msg: msg)
             dlog("service not found: \(error)")
-            completion(nil, error)
+            result.e = error
             
         default:
             let msg = keystore.messageForStatus(status: deleteStatus)
             let error = ServiceError(type: .invalidData, code: deleteStatus, msg: msg)
             dlog("keystore error: \(error)")
-            completion(nil, error)
+            result.e = error
+        }
+        return result
+    }
+    
+    func send() -> Any? {
+        
+        switch method {
+            
+        case .load:
+            return load()
+        case .store:
+            return store()
+        case .delete:
+            return delete()
+        case .clear:
+            return clear()
+            
         }
     }
 }

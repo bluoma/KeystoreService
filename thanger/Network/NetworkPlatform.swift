@@ -76,10 +76,24 @@ class NetworkPlatform {
         }
         for clientDict in clientsArray {
             guard let clientName = clientDict["client"] else { continue }
-            //create CoinbaseOauth2Client
+            //create CoinbaseOauth2WebClient
+            if clientName == CoinbaseOauth2WebClient.staticName {
+                guard let scheme = clientDict["scheme"], let host = clientDict["host"] else {
+                    dlog("Error no scheme/host for CoinbaseOauth2WebClient in plist")
+                    continue
+                }
+                let client: CoinbaseOauth2WebClient
+                if let port = clientDict["port"] {
+                    client = CoinbaseOauth2WebClient(withScheme: scheme, host: host, port: port)
+                }
+                else {
+                    client = CoinbaseOauth2WebClient(withScheme: scheme, host: host)
+                }
+                clients.append(client)
+            }
             if clientName == CoinbaseOauth2Client.staticName {
                 guard let scheme = clientDict["scheme"], let host = clientDict["host"] else {
-                    dlog("Error no scheme/host for MovieDbClient in plist")
+                    dlog("Error no scheme/host for CoinbaseOauth2Client in plist")
                     continue
                 }
                 let client: CoinbaseOauth2Client
@@ -94,7 +108,7 @@ class NetworkPlatform {
             //create CoinbaseHttpClient
             if clientName == CoinbaseHttpClient.staticName {
                 guard let scheme = clientDict["scheme"], let host = clientDict["host"] else {
-                    dlog("Error no scheme/host for MovieDbClient in plist")
+                    dlog("Error no scheme/host for CoinbaseHttpClient in plist")
                     continue
                 }
                 let client: CoinbaseHttpClient
@@ -159,19 +173,25 @@ class NetworkPlatform {
         requestTaskDictLock.unlock()
     }
     
-    func send(remoteRequest: RemoteRequest) -> Void {
+    func send(remoteRequest: RemoteRequest) -> Any? {
         
         guard let client = clientForRequest(name: remoteRequest.description) else {
             let error = ServiceError(type: .invalidRequest, code: ServiceErrorCode.invalidClient.rawValue, msg: "No client for request \(String(describing: self))")
             remoteRequest.failureBlock?(error)
-            return
+            return nil
         }
         
         guard let urlRequest = client.buildUrlRequest(withRemoteRequest: remoteRequest) else {
             let error = ServiceError(type: .invalidRequest, code: ServiceErrorCode.invalidRequest.rawValue, msg: "No urlRequest from client: \(String(describing: client))")
             remoteRequest.failureBlock?(error)
-            return
+            return nil
         }
+        
+        //send the urlRequest back to the service if it's not sendable by a client->transport
+        guard remoteRequest.isTransportable else {
+            return urlRequest
+        }
+        
         //forward to client 
         let task = client.send(urlRequest: urlRequest, completion:
         {
@@ -195,5 +215,6 @@ class NetworkPlatform {
         if let foundtask = task {
             addTask(foundtask, forRequest: remoteRequest)
         }
+        return task
     }
 }

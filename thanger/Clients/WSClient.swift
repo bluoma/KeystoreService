@@ -178,7 +178,7 @@ class WSClient: RemoteClient {
     }
     
     override var description: String {
-        return WSClient.staticName
+        return Self.staticName
     }
     
     override class var staticName: String {
