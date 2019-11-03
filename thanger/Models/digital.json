@@ -1,0 +1,113 @@
+{
+    "data": [
+        {
+            "id": "BTC",
+            "name": "USD"
+        },
+        {
+            "base": "BCH",
+            "currency": "USD",
+            "amount": "294.86"
+        },
+        {
+            "base": "BSV",
+            "currency": "USD",
+            "amount": "133.599647465"
+        },
+        {
+            "base": "ETH",
+            "currency": "USD",
+            "amount": "185.065"
+        },
+        {
+            "base": "ETC",
+            "currency": "USD",
+            "amount": "4.986"
+        },
+        {
+            "base": "LTC",
+            "currency": "USD",
+            "amount": "59.0"
+        },
+        {
+            "base": "ZRX",
+            "currency": "USD",
+            "amount": "0.2999295"
+        },
+        {
+            "base": "USDC",
+            "currency": "USD",
+            "amount": "1.0"
+        },
+        {
+            "base": "BAT",
+            "currency": "USD",
+            "amount": "0.2359595"
+        },
+        {
+            "base": "LINK",
+            "currency": "USD",
+            "amount": "2.70991"
+        },
+        {
+            "base": "DAI",
+            "currency": "USD",
+            "amount": "1.0048495"
+        },
+        {
+            "base": "ZEC",
+            "currency": "USD",
+            "amount": "37.865"
+        },
+        {
+            "base": "XRP",
+            "currency": "USD",
+            "amount": "0.2966"
+        },
+        {
+            "base": "REP",
+            "currency": "USD",
+            "amount": "9.57"
+        },
+        {
+            "base": "XLM",
+            "currency": "USD",
+            "amount": "0.070518"
+        },
+        {
+            "base": "EOS",
+            "currency": "USD",
+            "amount": "3.357"
+        },
+        {
+            "base": "XTZ",
+            "currency": "USD",
+            "amount": "0.87175"
+        },
+        {
+            "base": "DASH",
+            "currency": "USD",
+            "amount": "72.295"
+        },
+        {
+            "base": "EUR",
+            "currency": "USD",
+            "amount": "1.12"
+        },
+        {
+            "base": "GBP",
+            "currency": "USD",
+            "amount": "1.29"
+        },
+        {
+            "base": "CAD",
+            "currency": "USD",
+            "amount": "0.76"
+        },
+        {
+            "base": "JPY",
+            "currency": "USD",
+            "amount": "0.01"
+        }
+    ]
+}

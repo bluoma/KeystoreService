@@ -73,25 +73,14 @@ class DefaultsWrapper: SecretWrapper {
         guard let accessGroup = accessGroup, let sharedDefaults = UserDefaults(suiteName: accessGroup) else {
             return Int(errSecInvalidContext)
         }
-        /*
+        
         let keys = sharedDefaults.dictionaryRepresentation().keys
         for key in keys {
-            sharedDefaults.removeObject(forKey: key)
-            dlog("removing: \(key)")
+            if SecretKeys.allValues.contains(key) {
+                sharedDefaults.removeObject(forKey: key)
+                dlog("removing: \(key)")
+            }
         }
-        */
-        let bkeys = sharedDefaults.dictionaryRepresentation().keys
-        for key in bkeys {
-            dlog("before key: \(key)")
-        }
-        
-        sharedDefaults.removePersistentDomain(forName: accessGroup)
-        
-        let akeys = sharedDefaults.dictionaryRepresentation().keys
-        for key in akeys {
-            dlog("after key: \(key)")
-        }
-        
         return Int(errSecSuccess)
     }
 }

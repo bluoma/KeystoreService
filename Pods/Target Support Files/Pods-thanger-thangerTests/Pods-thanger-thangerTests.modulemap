@@ -1,0 +1,6 @@
+framework module Pods_thanger_thangerTests {
+  umbrella header "Pods-thanger-thangerTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

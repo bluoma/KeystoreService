@@ -15,6 +15,7 @@ struct SecretKeys {
     static let coinbaseRefreshTokenKey = "coinbaseRefreshTokenKey"
     static let coinbaseClientIdKey = "coinbaseClientIdKey"
     static let coinbaseClientSecretKey = "coinbaseClientSecretKey"
+    static let allValues: [String] = [coinbaseAccessTokenKey, coinbaseRefreshTokenKey, coinbaseClientIdKey, coinbaseClientSecretKey]
     
 }
 

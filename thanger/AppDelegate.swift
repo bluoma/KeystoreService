@@ -11,6 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
     var window: UIWindow?
     let secretService = SecretService()
     
@@ -18,11 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let status = storeSecrets()
-        dlog("store secrets status: \(status)")
-        if status < 0 {
-            return false
-        }
-        
+        precondition(status > 0, "error loading secrets")
+            
+        NetworkPlatform.load()
         
         return true
     }

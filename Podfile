@@ -7,6 +7,10 @@ target 'thanger' do
 
   # Pods for thanger
 	pod 'AlamofireImage', '~> 3.5'
-  pod 'Starscream', '~> 3.0.2'
+	pod 'Starscream', '~> 3.0.2'
 
+  target 'thangerTests' do
+      inherit! :complete
+  end
+  
 end

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   Network.plist
+   thanger
+
+   Created by Bill on 10/19/19.
+   Copyright (c) 2019 Bill. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+    <key>remoteClients</key>
+    <array>
+        <dict>
+            <key>client</key>
+            <string>CoinbaseOauth2Client</string>
+            <key>scheme</key>
+            <string>https</string>
+            <key>host</key>
+            <string>api.coinbase.com</string>
+        </dict>
+        <dict>
+            <key>client</key>
+            <string>CoinbaseHttpClient</string>
+            <key>scheme</key>
+            <string>https</string>
+            <key>host</key>
+            <string>api.coinbase.com</string>
+        </dict>
+        <dict>
+            <key>client</key>
+            <string>WSClient</string>
+            <key>scheme</key>
+            <string>wss</string>
+            <key>host</key>
+            <string>ws-feed.pro.coinbase.com</string>
+            <key>port</key>
+            <string>443</string>
+        </dict>
+    </array>
+    <key>requestClientDict</key>
+    <dict>
+        <key>PriceRequest</key>
+        <string>CoinbaseHttpClient</string>
+        <key>CurrencyRequest</key>
+        <string>CoinbaseHttpClient</string>
+        <key>UserAccountRequest</key>
+        <string>CoinbaseOauth2Client</string>
+    </dict>
+    </dict>
+</plist>

@@ -7,7 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26D079EDD05F88D4B4304055 /* Pods_thanger_thangerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FC683CAAFA0FC47CE7E132 /* Pods_thanger_thangerTests.framework */; };
 		5768066273C46977F5524F9B /* Pods_thanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */; };
+		E6CDCEFCFF116C270A4DFBFA /* Pods_thanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7671BB7236D567100C0470D /* Pods_thanger.framework */; };
+		F7671B89236D0A2200C0470D /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B88236D0A2200C0470D /* PriceRequest.swift */; };
+		F7671B8B236D0A8A00C0470D /* RemoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */; };
+		F7671B8C236D0A8A00C0470D /* RemoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */; };
+		F7671B91236D408100C0470D /* RemoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8E236D408100C0470D /* RemoteClient.swift */; };
+		F7671B92236D408100C0470D /* RemoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8E236D408100C0470D /* RemoteClient.swift */; };
+		F7671B95236D408100C0470D /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B90236D408100C0470D /* WSClient.swift */; };
+		F7671B96236D408100C0470D /* WSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B90236D408100C0470D /* WSClient.swift */; };
+		F7671B9D236D412C00C0470D /* RemoteTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B98236D412C00C0470D /* RemoteTransport.swift */; };
+		F7671B9E236D412C00C0470D /* RemoteTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B98236D412C00C0470D /* RemoteTransport.swift */; };
+		F7671B9F236D412C00C0470D /* WSStarscreamTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B99236D412C00C0470D /* WSStarscreamTransport.swift */; };
+		F7671BA0236D412C00C0470D /* WSStarscreamTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B99236D412C00C0470D /* WSStarscreamTransport.swift */; };
+		F7671BA1236D412C00C0470D /* JsonHttpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9A236D412C00C0470D /* JsonHttpTransport.swift */; };
+		F7671BA2236D412C00C0470D /* JsonHttpTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9A236D412C00C0470D /* JsonHttpTransport.swift */; };
+		F7671BA3236D412C00C0470D /* WSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9B236D412C00C0470D /* WSMessage.swift */; };
+		F7671BA4236D412C00C0470D /* WSMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9B236D412C00C0470D /* WSMessage.swift */; };
+		F7671BA5236D412C00C0470D /* WSNativeTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9C236D412C00C0470D /* WSNativeTransport.swift */; };
+		F7671BA6236D412C00C0470D /* WSNativeTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B9C236D412C00C0470D /* WSNativeTransport.swift */; };
+		F7671BA8236D423600C0470D /* CoinbaseOauth2Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BA7236D423600C0470D /* CoinbaseOauth2Client.swift */; };
+		F7671BA9236D423600C0470D /* CoinbaseOauth2Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BA7236D423600C0470D /* CoinbaseOauth2Client.swift */; };
+		F7671BAD236D436700C0470D /* NetworkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BAB236D436700C0470D /* NetworkPlatform.swift */; };
+		F7671BAE236D436700C0470D /* NetworkPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BAB236D436700C0470D /* NetworkPlatform.swift */; };
+		F7671BAF236D436700C0470D /* Network.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7671BAC236D436700C0470D /* Network.plist */; };
+		F7671BB0236D436700C0470D /* Network.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7671BAC236D436700C0470D /* Network.plist */; };
+		F7671BB2236D49A900C0470D /* PriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BB1236D49A900C0470D /* PriceService.swift */; };
+		F7671BB3236D49A900C0470D /* PriceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BB1236D49A900C0470D /* PriceService.swift */; };
+		F7671BB5236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BB4236D4B7500C0470D /* CoinbaseHttpClient.swift */; };
+		F7671BB6236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BB4236D4B7500C0470D /* CoinbaseHttpClient.swift */; };
+		F7671BB9236D591E00C0470D /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B88236D0A2200C0470D /* PriceRequest.swift */; };
+		F7671BBB236D5E2E00C0470D /* CurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */; };
+		F7671BBD236D5FCB00C0470D /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BBC236D5FCB00C0470D /* CurrencyService.swift */; };
+		F7671BBE236D632700C0470D /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BBC236D5FCB00C0470D /* CurrencyService.swift */; };
+		F7671BBF236D63D600C0470D /* CurrencyRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */; };
+		F7671BC1236DF91400C0470D /* DigitalAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC0236DF91400C0470D /* DigitalAsset.swift */; };
+		F7671BC2236DF91500C0470D /* DigitalAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BC0236DF91400C0470D /* DigitalAsset.swift */; };
 		F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDD92367D780002DDF34 /* AppDelegate.swift */; };
 		F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */; };
 		F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDD2367D780002DDF34 /* ViewController.swift */; };
@@ -35,6 +71,12 @@
 		F7CBBE1E236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */; };
 		F7CBBE23236CAB48002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBE22236CAB48002DDF34 /* secrets.plist */; };
 		F7CBBE24236CAB48002DDF34 /* secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7CBBE22236CAB48002DDF34 /* secrets.plist */; };
+		F7CBBE26236CD745002DDF34 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE25236CD745002DDF34 /* Currency.swift */; };
+		F7CBBE27236CD745002DDF34 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE25236CD745002DDF34 /* Currency.swift */; };
+		F7CBBE29236CDA7A002DDF34 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE28236CDA7A002DDF34 /* ExchangeRates.swift */; };
+		F7CBBE2A236CDA7A002DDF34 /* ExchangeRates.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBE28236CDA7A002DDF34 /* ExchangeRates.swift */; };
+		F7FCBEC1236CFFF900E70A75 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FCBEC0236CFFF900E70A75 /* Price.swift */; };
+		F7FCBEC2236CFFF900E70A75 /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FCBEC0236CFFF900E70A75 /* Price.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +92,27 @@
 /* Begin PBXFileReference section */
 		2B902F50997B517A23BFD66B /* Pods-thanger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger.debug.xcconfig"; path = "Target Support Files/Pods-thanger/Pods-thanger.debug.xcconfig"; sourceTree = "<group>"; };
 		362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52FC683CAAFA0FC47CE7E132 /* Pods_thanger_thangerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thanger_thangerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		668528FFED5E93E40209E44A /* Pods-thanger-thangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger-thangerTests.release.xcconfig"; path = "Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests.release.xcconfig"; sourceTree = "<group>"; };
+		761FD098E97DF5B6954AED83 /* Pods-thanger-thangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger-thangerTests.debug.xcconfig"; path = "Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F7671B88236D0A2200C0470D /* PriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequest.swift; sourceTree = "<group>"; };
+		F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRequest.swift; sourceTree = "<group>"; };
+		F7671B8E236D408100C0470D /* RemoteClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteClient.swift; sourceTree = "<group>"; };
+		F7671B90236D408100C0470D /* WSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSClient.swift; sourceTree = "<group>"; };
+		F7671B98236D412C00C0470D /* RemoteTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteTransport.swift; sourceTree = "<group>"; };
+		F7671B99236D412C00C0470D /* WSStarscreamTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSStarscreamTransport.swift; sourceTree = "<group>"; };
+		F7671B9A236D412C00C0470D /* JsonHttpTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonHttpTransport.swift; sourceTree = "<group>"; };
+		F7671B9B236D412C00C0470D /* WSMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSMessage.swift; sourceTree = "<group>"; };
+		F7671B9C236D412C00C0470D /* WSNativeTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSNativeTransport.swift; sourceTree = "<group>"; };
+		F7671BA7236D423600C0470D /* CoinbaseOauth2Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinbaseOauth2Client.swift; sourceTree = "<group>"; };
+		F7671BAB236D436700C0470D /* NetworkPlatform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPlatform.swift; sourceTree = "<group>"; };
+		F7671BAC236D436700C0470D /* Network.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Network.plist; sourceTree = "<group>"; };
+		F7671BB1236D49A900C0470D /* PriceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceService.swift; sourceTree = "<group>"; };
+		F7671BB4236D4B7500C0470D /* CoinbaseHttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoinbaseHttpClient.swift; sourceTree = "<group>"; };
+		F7671BB7236D567100C0470D /* Pods_thanger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_thanger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRequest.swift; sourceTree = "<group>"; };
+		F7671BBC236D5FCB00C0470D /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyService.swift; sourceTree = "<group>"; };
+		F7671BC0236DF91400C0470D /* DigitalAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitalAsset.swift; sourceTree = "<group>"; };
 		F7CBBDD62367D780002DDF34 /* thanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CBBDD92367D780002DDF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +136,9 @@
 		F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretWrapper.swift; sourceTree = "<group>"; };
 		F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsWrapper.swift; sourceTree = "<group>"; };
 		F7CBBE22236CAB48002DDF34 /* secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = secrets.plist; sourceTree = "<group>"; };
+		F7CBBE25236CD745002DDF34 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		F7CBBE28236CDA7A002DDF34 /* ExchangeRates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRates.swift; sourceTree = "<group>"; };
+		F7FCBEC0236CFFF900E70A75 /* Price.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger.release.xcconfig"; path = "Target Support Files/Pods-thanger/Pods-thanger.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5768066273C46977F5524F9B /* Pods_thanger.framework in Frameworks */,
+				E6CDCEFCFF116C270A4DFBFA /* Pods_thanger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7CBBE0423689EDD002DDF34 /* XCTest.framework in Frameworks */,
+				26D079EDD05F88D4B4304055 /* Pods_thanger_thangerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +169,8 @@
 			children = (
 				2B902F50997B517A23BFD66B /* Pods-thanger.debug.xcconfig */,
 				F9863AAB718CC901A4D161B9 /* Pods-thanger.release.xcconfig */,
+				761FD098E97DF5B6954AED83 /* Pods-thanger-thangerTests.debug.xcconfig */,
+				668528FFED5E93E40209E44A /* Pods-thanger-thangerTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -108,10 +178,44 @@
 		D6DE6E70BAE786EF0AC07809 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7671BB7236D567100C0470D /* Pods_thanger.framework */,
 				F7CBBDF423689E09002DDF34 /* XCTest.framework */,
 				362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */,
+				52FC683CAAFA0FC47CE7E132 /* Pods_thanger_thangerTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7671B8D236D400100C0470D /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				F7671BB4236D4B7500C0470D /* CoinbaseHttpClient.swift */,
+				F7671BA7236D423600C0470D /* CoinbaseOauth2Client.swift */,
+				F7671B8E236D408100C0470D /* RemoteClient.swift */,
+				F7671B90236D408100C0470D /* WSClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		F7671B97236D410A00C0470D /* Transports */ = {
+			isa = PBXGroup;
+			children = (
+				F7671B9A236D412C00C0470D /* JsonHttpTransport.swift */,
+				F7671B98236D412C00C0470D /* RemoteTransport.swift */,
+				F7671B9B236D412C00C0470D /* WSMessage.swift */,
+				F7671B9C236D412C00C0470D /* WSNativeTransport.swift */,
+				F7671B99236D412C00C0470D /* WSStarscreamTransport.swift */,
+			);
+			path = Transports;
+			sourceTree = "<group>";
+		};
+		F7671BAA236D433700C0470D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F7671BAC236D436700C0470D /* Network.plist */,
+				F7671BAB236D436700C0470D /* NetworkPlatform.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		F7CBBDCD2367D780002DDF34 = {
@@ -137,6 +241,9 @@
 		F7CBBDD82367D780002DDF34 /* thanger */ = {
 			isa = PBXGroup;
 			children = (
+				F7671BAA236D433700C0470D /* Network */,
+				F7671B97236D410A00C0470D /* Transports */,
+				F7671B8D236D400100C0470D /* Clients */,
 				F7CBBE0F236A9879002DDF34 /* Requests */,
 				F7CBBE062368A68D002DDF34 /* Services */,
 				F7CBBDF123689B7C002DDF34 /* Models */,
@@ -162,6 +269,10 @@
 			isa = PBXGroup;
 			children = (
 				F7CBBDEF23689B6E002DDF34 /* Secret.swift */,
+				F7CBBE25236CD745002DDF34 /* Currency.swift */,
+				F7CBBE28236CDA7A002DDF34 /* ExchangeRates.swift */,
+				F7FCBEC0236CFFF900E70A75 /* Price.swift */,
+				F7671BC0236DF91400C0470D /* DigitalAsset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -180,6 +291,8 @@
 			isa = PBXGroup;
 			children = (
 				F7CBBE0B23690454002DDF34 /* SecretService.swift */,
+				F7671BB1236D49A900C0470D /* PriceService.swift */,
+				F7671BBC236D5FCB00C0470D /* CurrencyService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -187,7 +300,10 @@
 		F7CBBE0F236A9879002DDF34 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */,
 				F7CBBE10236A9892002DDF34 /* SecretRequest.swift */,
+				F7671B88236D0A2200C0470D /* PriceRequest.swift */,
+				F7671BBA236D5E2E00C0470D /* CurrencyRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -218,9 +334,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7CBBE0123689ECD002DDF34 /* Build configuration list for PBXNativeTarget "thangerTests" */;
 			buildPhases = (
+				91DAC31AA9B7D50A19CD2B3B /* [CP] Check Pods Manifest.lock */,
 				F7CBBDF623689ECD002DDF34 /* Sources */,
 				F7CBBDF723689ECD002DDF34 /* Frameworks */,
 				F7CBBDF823689ECD002DDF34 /* Resources */,
+				2F2217FB50F9498A5BBDADC6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,6 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7671BAF236D436700C0470D /* Network.plist in Resources */,
 				F7CBBE23236CAB48002DDF34 /* secrets.plist in Resources */,
 				F7CBBDE62367D784002DDF34 /* LaunchScreen.storyboard in Resources */,
 				F7CBBDE32367D784002DDF34 /* Assets.xcassets in Resources */,
@@ -287,12 +406,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7CBBE24236CAB48002DDF34 /* secrets.plist in Resources */,
+				F7671BB0236D436700C0470D /* Network.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2F2217FB50F9498A5BBDADC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8E782BFA9D147D8634E94F19 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,6 +445,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-thanger/Pods-thanger-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91DAC31AA9B7D50A19CD2B3B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-thanger-thangerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B9239A86F5FE4EB1344DEF82 /* [CP] Check Pods Manifest.lock */ = {
@@ -339,16 +498,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CBBE26236CD745002DDF34 /* Currency.swift in Sources */,
+				F7671B9F236D412C00C0470D /* WSStarscreamTransport.swift in Sources */,
+				F7FCBEC1236CFFF900E70A75 /* Price.swift in Sources */,
+				F7671BB2236D49A900C0470D /* PriceService.swift in Sources */,
+				F7671BA8236D423600C0470D /* CoinbaseOauth2Client.swift in Sources */,
 				F7CBBE092368D094002DDF34 /* Constants.swift in Sources */,
+				F7671B95236D408100C0470D /* WSClient.swift in Sources */,
+				F7671BAD236D436700C0470D /* NetworkPlatform.swift in Sources */,
+				F7671B8B236D0A8A00C0470D /* RemoteRequest.swift in Sources */,
+				F7671B91236D408100C0470D /* RemoteClient.swift in Sources */,
+				F7671BB5236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
 				F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */,
+				F7671BBB236D5E2E00C0470D /* CurrencyRequest.swift in Sources */,
 				F7CBBDF023689B6E002DDF34 /* Secret.swift in Sources */,
 				F7CBBE1A236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
 				F7CBBE0C23690454002DDF34 /* SecretService.swift in Sources */,
+				F7CBBE29236CDA7A002DDF34 /* ExchangeRates.swift in Sources */,
 				F7CBBE1D236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
 				F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */,
+				F7671BA1236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
+				F7671BA5236D412C00C0470D /* WSNativeTransport.swift in Sources */,
 				F7CBBE14236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
 				F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */,
+				F7671BA3236D412C00C0470D /* WSMessage.swift in Sources */,
 				F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */,
+				F7671B9D236D412C00C0470D /* RemoteTransport.swift in Sources */,
+				F7671BBD236D5FCB00C0470D /* CurrencyService.swift in Sources */,
+				F7671BC1236DF91400C0470D /* DigitalAsset.swift in Sources */,
+				F7671B89236D0A2200C0470D /* PriceRequest.swift in Sources */,
 				F7CBBE11236A9893002DDF34 /* SecretRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,14 +536,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7CBBE1B236AB66D002DDF34 /* SecretWrapper.swift in Sources */,
+				F7671BB6236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
+				F7671BA2236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
+				F7671BAE236D436700C0470D /* NetworkPlatform.swift in Sources */,
+				F7671B92236D408100C0470D /* RemoteClient.swift in Sources */,
 				F7CBBE18236AAEA9002DDF34 /* ServiceError.swift in Sources */,
 				F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */,
 				F7CBBE0E23690B10002DDF34 /* Secret.swift in Sources */,
+				F7CBBE2A236CDA7A002DDF34 /* ExchangeRates.swift in Sources */,
+				F7671BA9236D423600C0470D /* CoinbaseOauth2Client.swift in Sources */,
+				F7671BC2236DF91500C0470D /* DigitalAsset.swift in Sources */,
+				F7671BB3236D49A900C0470D /* PriceService.swift in Sources */,
+				F7671BBE236D632700C0470D /* CurrencyService.swift in Sources */,
+				F7671BBF236D63D600C0470D /* CurrencyRequest.swift in Sources */,
 				F7CBBE0D23690454002DDF34 /* SecretService.swift in Sources */,
+				F7671BA0236D412C00C0470D /* WSStarscreamTransport.swift in Sources */,
+				F7671BB9236D591E00C0470D /* PriceRequest.swift in Sources */,
+				F7671BA4236D412C00C0470D /* WSMessage.swift in Sources */,
 				F7CBBE15236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
+				F7671B9E236D412C00C0470D /* RemoteTransport.swift in Sources */,
+				F7CBBE27236CD745002DDF34 /* Currency.swift in Sources */,
+				F7671B96236D408100C0470D /* WSClient.swift in Sources */,
+				F7FCBEC2236CFFF900E70A75 /* Price.swift in Sources */,
 				F7CBBE12236A9893002DDF34 /* SecretRequest.swift in Sources */,
 				F7CBBE1E236BAC58002DDF34 /* DefaultsWrapper.swift in Sources */,
+				F7671B8C236D0A8A00C0470D /* RemoteRequest.swift in Sources */,
 				F7CBBE0523689EED002DDF34 /* SecretTestCase.swift in Sources */,
+				F7671BA6236D412C00C0470D /* WSNativeTransport.swift in Sources */,
 				F7CBBE0A2368D0B3002DDF34 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +753,7 @@
 		};
 		F7CBBE0223689ECD002DDF34 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 761FD098E97DF5B6954AED83 /* Pods-thanger-thangerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -576,6 +774,7 @@
 		};
 		F7CBBE0323689ECD002DDF34 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 668528FFED5E93E40209E44A /* Pods-thanger-thangerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

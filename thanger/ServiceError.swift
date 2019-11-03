@@ -39,7 +39,7 @@ struct ServiceError: Error {
     var file: String = ""
     var function: String = ""
     var line: Int = 0
-    var domain: String = "Mooveeze"
+    var domain: String = "thanger"
     
     
     init(type: ServiceErrorType, code: Int = 0, msg: String, file: String = #file, function: String = #function, line: Int = #line) {
