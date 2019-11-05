@@ -55,7 +55,7 @@ class KeychainWrapper: SecretWrapper {
     }
     
     func store(key: String, value: Data) -> Int {
-        
+        dlog("key: \(key)")
         var status = errSecItemNotFound
         
         var query: [String: Any] = [
@@ -75,6 +75,7 @@ class KeychainWrapper: SecretWrapper {
         switch searchStatus {
             
         case errSecItemNotFound:
+            dlog("di not find existing secret in keychain, need to add")
             query[kSecValueData as String] = value
             status = SecItemAdd(query as CFDictionary, nil)
             

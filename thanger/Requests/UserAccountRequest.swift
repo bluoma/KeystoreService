@@ -13,22 +13,7 @@ class UserAccountRequest: RemoteRequest {
     override init() {
         super.init()
         super.version = "/v2"
-        super.resourcePath = "/oauth"
-    }
-    
-    class func createAuthTokenRequest(withAuthCode authCode: String, clientId: String, clientSecret: String, redirectUri: String) -> UserAccountRequest {
-        
-        let request = UserAccountRequest()
-        request.method = HTTPMethod.post.rawValue
-        request.contentType = "application/x-www-form-urlencoded"
-        request.appendPath("token")
-        request.contentBody["grant_type"] = "authorization_code"
-        request.contentBody["code"] = authCode
-        request.contentBody["client_id"] = clientId
-        request.contentBody["client_secret"] = clientSecret
-        request.contentBody["redirect_uri"] = redirectUri
-
-        return request
+        super.resourcePath = "/?"
     }
     
     override var description: String {

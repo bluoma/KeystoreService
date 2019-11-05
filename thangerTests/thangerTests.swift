@@ -19,10 +19,89 @@ class thangerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         
     }
-
-    func testStoreAccessToken() {
+    func testStoreOauthCred() {
+        let jsonString = """
+        {
+            "scope": "wallet:user:read wallet:accounts:read",
+            "token_type": "bearer",
+            "created_at": 1572898447,
+            "refresh_token": "2c6b738293d6df954eaa4d2da998995efb2e687be9d23b943c3e4f789fc1d597",
+            "expires_in": 7200,
+            "access_token": "3b973ecd30f405589f5c1e613d7d7da854b220baa601fce5915a39f9f124042b"
+        }
+        """
         
-        let secret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "12134567890", secretType: .accessToken)
+        if let data = jsonString.data(using: .utf8) {
+            
+            do {
+                let decoder = JSONDecoder()
+
+                let cred = try decoder.decode(OAuth2Credential.self, from: data)
+                dlog("cred: \(cred)")
+
+                let key = SecretKeys.coinbaseOAuthCredentialKey
+                let secret: Secret = Secret(secretKey: key, secretType: .oauthCred, secretValue: cred)
+                
+                secretService.storeSecret(secret)
+                { (secret: Secret?, error: Error?) in
+                    if let secret = secret {
+                        dlog("secret: \(secret)")
+                        if let cred = secret.secretValue as? OAuth2Credential {
+                            dlog("cred: \(cred)")
+                        }
+                        else {
+                            XCTFail("no cred")
+                        }
+                    }
+                    else if let error = error {
+                        dlog("error: \(error)")
+                        XCTFail("error")
+                    }
+                    else {
+                        XCTFail("no secret, no error")
+                    }
+                }
+            }
+            catch {
+                dlog("error: \(error)")
+                XCTFail("decoder error: \(error)")
+            }
+        }
+        else {
+            XCTFail("bad data from string")
+        }
+    }
+    
+    
+    func testFetchOAuthCred() {
+           
+           let searchSecret = Secret(secretKey:SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred)
+           
+           secretService.fetchSecret(searchSecret) { (secret: Secret?, error: Error?) in
+               
+               if let secret = secret {
+                   dlog("secret: \(secret)")
+                   if let cred = secret.secretValue as? OAuth2Credential {
+                       dlog("cred: \(cred)")
+                   }
+                   else {
+                       XCTFail("no cred")
+                   }
+               }
+               else if let error = error {
+                   dlog("error: \(error)")
+                   XCTFail("error")
+               }
+               else {
+                   XCTFail("no secret, no error")
+               }
+           }
+       }
+    
+    
+    func testStoreClientId() {
+        
+        let secret = Secret(secretKey:SecretKeys.coinbaseClientIdKey, secretType: .string, secretValue: "12134567890")
         
         secretService.storeSecret(secret)
         { (secret: Secret?, error: Error?) in
@@ -41,11 +120,53 @@ class thangerTests: XCTestCase {
     }
 
     
-    func testFetchAccessToken() {
+    func testFetchClientId() {
         
-        let searchSecret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "", secretType: .accessToken)
+        let searchSecret = Secret(secretKey:SecretKeys.coinbaseClientIdKey, secretType: .string)
         
         secretService.fetchSecret(searchSecret) { (secret: Secret?, error: Error?) in
+            
+            if let secret = secret {
+                dlog("secret: \(secret)")
+                if let clientId = secret.secretValue as? String {
+                    dlog("clientId: \(clientId)")
+                }
+                else {
+                    XCTFail("no client id")
+                }
+            }
+            else if let error = error {
+                dlog("error: \(error)")
+                XCTFail("error")
+            }
+            else {
+                XCTFail("no secret, no error")
+            }
+        }
+    }
+    
+    func testDeleteClientId() {
+        
+        let searchSecret = Secret(secretKey:SecretKeys.coinbaseClientIdKey, secretType: .string)
+        
+        secretService.deleteSecret(searchSecret) { (secret: Secret?, error: Error?) in
+            
+           if let error = error {
+                dlog("error: \(error)")
+                XCTFail("error")
+            }
+            else {
+                dlog("success")
+            }
+        }
+    }
+    
+    func testStoreClientSecret() {
+        
+        let secret = Secret(secretKey:SecretKeys.coinbaseClientSecretKey, secretType: .string, secretValue: "12134567890")
+        
+        secretService.storeSecret(secret)
+        { (secret: Secret?, error: Error?) in
             
             if let secret = secret {
                 dlog("secret: \(secret)")
@@ -59,10 +180,35 @@ class thangerTests: XCTestCase {
             }
         }
     }
-    
-    func testDeleteAccessToken() {
+
+    func testFetchClientSecret() {
         
-        let searchSecret = Secret(secretKey:SecretKeys.coinbaseAccessTokenKey, secretVal: "", secretType: .accessToken)
+        let searchSecret = Secret(secretKey:SecretKeys.coinbaseClientSecretKey, secretType: .string)
+        
+        secretService.fetchSecret(searchSecret) { (secret: Secret?, error: Error?) in
+            
+            if let secret = secret {
+                dlog("secret: \(secret)")
+                if let clientSecret = secret.secretValue as? String {
+                    dlog("clientSecret: \(clientSecret)")
+                }
+                else {
+                    XCTFail("no client secret")
+                }
+            }
+            else if let error = error {
+                dlog("error: \(error)")
+                XCTFail("error")
+            }
+            else {
+                XCTFail("no secret, no error")
+            }
+        }
+    }
+    
+    func testDeleteClientSecret() {
+        
+        let searchSecret = Secret(secretKey:SecretKeys.coinbaseClientSecretKey, secretType: .string)
         
         secretService.deleteSecret(searchSecret) { (secret: Secret?, error: Error?) in
             
@@ -75,7 +221,7 @@ class thangerTests: XCTestCase {
             }
         }
     }
-
+    
     
     func testDeleteAllSecrets() {
                 
@@ -88,6 +234,131 @@ class thangerTests: XCTestCase {
             else {
                 dlog("success")
             }
+        }
+    }
+    
+    func testSecretBis() {
+        
+        let jsonString = """
+        {
+            "scope": "wallet:user:read wallet:accounts:read",
+            "token_type": "bearer",
+            "created_at": 1572898447,
+            "refresh_token": "2c6b738293d6df954eaa4d2da998995efb2e687be9d23b943c3e4f789fc1d597",
+            "expires_in": 7200,
+            "access_token": "3b973ecd30f405589f5c1e613d7d7da854b220baa601fce5915a39f9f124042b"
+        }
+        """
+        
+        if let data = jsonString.data(using: .utf8) {
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let cred = try decoder.decode(OAuth2Credential.self, from: data)
+                dlog("cred: \(cred)")
+
+                let key = SecretKeys.coinbaseOAuthCredentialKey
+                
+                let secret: SecretBis<OAuth2Credential> = SecretBis(secretKey: key, secretType: .oauthCred, secretValue: cred)
+                
+                let encoder = JSONEncoder()
+                let jsonData = try encoder.encode(secret)
+                
+                let ddecoder = JSONDecoder()
+                let dsecret = try ddecoder.decode(SecretBis<OAuth2Credential>.self, from: jsonData)
+                
+                dlog("edsecret: \(dsecret)")
+            }
+            catch {
+                dlog("error: \(error)")
+                XCTFail("decoder error: \(error)")
+            }
+        }
+        else {
+            XCTFail("bad data from string")
+        }
+        
+    }
+    
+    func testSecretTest() {
+        
+        let jsonString = """
+        {
+            "scope": "wallet:user:read wallet:accounts:read",
+            "token_type": "bearer",
+            "created_at": 1572898447,
+            "refresh_token": "2c6b738293d6df954eaa4d2da998995efb2e687be9d23b943c3e4f789fc1d597",
+            "expires_in": 7200,
+            "access_token": "3b973ecd30f405589f5c1e613d7d7da854b220baa601fce5915a39f9f124042b"
+        }
+        """
+        
+        if let data = jsonString.data(using: .utf8) {
+            
+            do {
+                let decoder = JSONDecoder()
+
+                let cred = try decoder.decode(OAuth2Credential.self, from: data)
+                dlog("cred: \(cred)")
+
+                let key = SecretKeys.coinbaseOAuthCredentialKey
+                let secret: Secret = Secret(secretKey: key, secretType: .oauthCred, secretValue: cred)
+                
+                let encoder = JSONEncoder()
+                let jsonData = try encoder.encode(secret)
+                
+                let ddecoder = JSONDecoder()
+                let dsecret = try ddecoder.decode(Secret.self, from: jsonData)
+                
+                dlog("edsecret: \(dsecret)")
+               
+                if let foundCred = dsecret.secretValue as? OAuth2Credential {
+                    dlog("foundcred: \(foundCred)")
+                }
+                else {
+                    XCTFail("no found cred from dsecret")
+                }
+            }
+            catch {
+                dlog("error: \(error)")
+                XCTFail("decoder error: \(error)")
+            }
+        }
+        else {
+            XCTFail("bad data from string")
+        }
+        
+    }
+    
+    func testDecodeOAuthCredential() {
+        
+        let jsonString = """
+        {
+            "scope": "wallet:user:read wallet:accounts:read",
+            "token_type": "bearer",
+            "created_at": 1572898447,
+            "refresh_token": "2c6b738293d6df954eaa4d2da998995efb2e687be9d23b943c3e4f789fc1d597",
+            "expires_in": 7200,
+            "access_token": "3b973ecd30f405589f5c1e613d7d7da854b220baa601fce5915a39f9f124042b"
+        }
+        """
+        
+        if let data = jsonString.data(using: .utf8) {
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let cred = try decoder.decode(OAuth2Credential.self, from: data)
+                dlog("cred: \(cred)")
+            }
+            catch {
+                dlog("error: \(error)")
+                XCTFail("decoder error: \(error)")
+            }
+        }
+        else {
+            XCTFail("bad data from string")
         }
     }
     

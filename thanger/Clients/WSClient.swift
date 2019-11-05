@@ -83,12 +83,12 @@ class WSClient: RemoteClient {
     
     init() {
         super.init(withScheme: "ws", host: "localhost", port: "9704")
-        transport.connect()
+        //transport.connect()
     }
     
     override init(withScheme scheme: String, host: String, port: String = "") {
         super.init(withScheme: scheme, host: host, port: port)
-        transport.connect()
+        //transport.connect()
     }
     
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {

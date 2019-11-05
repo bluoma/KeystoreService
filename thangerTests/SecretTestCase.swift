@@ -124,10 +124,9 @@ class SecretTestCase: XCTestCase {
     
     func testEncodeDecodeSecret() {
         
-        let secret = Secret(secretKey: SecretKeys.coinbaseAccessTokenKey, secretVal: "0123456789", secretType: .accessToken, expirationDate: nil)
+        let secret = Secret(secretKey: SecretKeys.coinbaseClientIdKey, secretType: .string, secretValue: "0123456789")
         
         let encoder = JSONEncoder()
-        //encoder.dateEncodingStrategy = .secondsSince1970
         
         do {
         let jsonData = try encoder.encode(secret)
@@ -162,7 +161,7 @@ class SecretTestCase: XCTestCase {
                     XCTFail("error getting access_token from jsonObj: \(jsonObj)")
                     return
                 }
-                let accessTokenSecret = Secret(secretKey: SecretKeys.coinbaseAccessTokenKey, secretVal: accessToken, secretType: .accessToken)
+                let accessTokenSecret = Secret(secretKey: SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred, secretValue: accessToken)
                 dlog("accessTokenSecret: \(accessTokenSecret)")
                 
                 guard let refreshToken = jsonObj["refresh_token"] as? String else {
@@ -170,7 +169,7 @@ class SecretTestCase: XCTestCase {
                     return
                 }
                 
-                let refreshTokenSecret = Secret(secretKey: SecretKeys.coinbaseRefreshTokenKey, secretVal: refreshToken, secretType: .refreshToken)
+                let refreshTokenSecret = Secret(secretKey: SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred, secretValue: refreshToken)
                 dlog("refreshTokenSecret: \(refreshTokenSecret)")
                 
             }
@@ -186,9 +185,9 @@ class SecretTestCase: XCTestCase {
     }
     
     
-    func testStoreAccessToken() {
+    func testStoreString() {
         
-        let secret = Secret(secretKey: SecretKeys.coinbaseAccessTokenKey, secretVal: "0123456789", secretType: .accessToken, expirationDate: nil)
+        let secret = Secret(secretKey: SecretKeys.coinbaseClientIdKey, secretType: .string, secretValue: "0123456789")
         
         dlog("secret: \(secret)")
         let encoder = JSONEncoder()
@@ -257,7 +256,7 @@ class SecretTestCase: XCTestCase {
         
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: SecretKeys.coinbaseAccessTokenKey,
+            kSecAttrAccount as String: SecretKeys.coinbaseClientIdKey,
             kSecAttrService as String: sharedKeychainService,
             kSecAttrAccessGroup as String: sharedKeychainGroup,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
@@ -297,7 +296,7 @@ class SecretTestCase: XCTestCase {
         
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: SecretKeys.coinbaseAccessTokenKey,
+            kSecAttrAccount as String: SecretKeys.coinbaseClientIdKey,
             kSecAttrService as String: sharedKeychainService,
             kSecAttrAccessGroup as String: sharedKeychainGroup,
             kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
@@ -308,10 +307,10 @@ class SecretTestCase: XCTestCase {
         switch status {
             
         case errSecSuccess:
-            dlog("deleted SecretKeys.coinbaseAccessTokenKey: \(SecretKeys.coinbaseAccessTokenKey)")
+            dlog("deleted SecretKeys.coinbaseAccessTokenKey: \(SecretKeys.coinbaseClientIdKey)")
             
         case errSecItemNotFound:
-            dlog("SecretKeys.coinbaseAccessTokenKeyy: \(SecretKeys.coinbaseAccessTokenKey) not found")
+            dlog("SecretKeys.coinbaseAccessTokenKeyy: \(SecretKeys.coinbaseClientIdKey) not found")
             
         default:
             let errMsgRetVal = statusMessageForKeyChain(status: status)

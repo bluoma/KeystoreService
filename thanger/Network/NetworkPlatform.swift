@@ -188,6 +188,7 @@ class NetworkPlatform {
         }
         
         //send the urlRequest back to the service if it's not sendable by a client->transport
+        //e.g it's for a webview or an external app to load
         guard remoteRequest.isTransportable else {
             return urlRequest
         }

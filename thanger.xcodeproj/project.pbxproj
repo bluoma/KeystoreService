@@ -54,6 +54,7 @@
 		F7671BD8236EAED100C0470D /* CoinbaseOauth2WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */; };
 		F7671BDA236F748600C0470D /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD9236F748600C0470D /* RequestProtocol.swift */; };
 		F7671BDB236F748600C0470D /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BD9236F748600C0470D /* RequestProtocol.swift */; };
+		F7671BDD236F8C8E00C0470D /* OAuthWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671BDC236F8C8D00C0470D /* OAuthWkWebViewController.swift */; };
 		F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDD92367D780002DDF34 /* AppDelegate.swift */; };
 		F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */; };
 		F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CBBDDD2367D780002DDF34 /* ViewController.swift */; };
@@ -128,6 +129,7 @@
 		F7671BD3236EADC100C0470D /* UserAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthRequest.swift; sourceTree = "<group>"; };
 		F7671BD6236EAED100C0470D /* CoinbaseOauth2WebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinbaseOauth2WebClient.swift; sourceTree = "<group>"; };
 		F7671BD9236F748600C0470D /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		F7671BDC236F8C8D00C0470D /* OAuthWkWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthWkWebViewController.swift; sourceTree = "<group>"; };
 		F7CBBDD62367D780002DDF34 /* thanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7CBBDD92367D780002DDF34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,9 @@
 				F7671B9B236D412C00C0470D /* WSMessage.swift */,
 				F7671B9C236D412C00C0470D /* WSNativeTransport.swift */,
 				F7671B99236D412C00C0470D /* WSStarscreamTransport.swift */,
+				F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */,
+				F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */,
+				F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */,
 			);
 			path = Transports;
 			sourceTree = "<group>";
@@ -266,15 +271,13 @@
 				F7CBBDD92367D780002DDF34 /* AppDelegate.swift */,
 				F7CBBDDB2367D780002DDF34 /* SceneDelegate.swift */,
 				F7CBBDDD2367D780002DDF34 /* ViewController.swift */,
+				F7671BDC236F8C8D00C0470D /* OAuthWkWebViewController.swift */,
 				F7CBBDDF2367D780002DDF34 /* Main.storyboard */,
 				F7CBBDE22367D784002DDF34 /* Assets.xcassets */,
 				F7CBBDE42367D784002DDF34 /* LaunchScreen.storyboard */,
 				F7CBBDE72367D784002DDF34 /* Info.plist */,
 				F7CBBE072368B961002DDF34 /* thanger.entitlements */,
 				F7CBBE082368D094002DDF34 /* Constants.swift */,
-				F7CBBE1C236BAC58002DDF34 /* DefaultsWrapper.swift */,
-				F7CBBE19236AB66C002DDF34 /* SecretWrapper.swift */,
-				F7CBBE13236A9AE3002DDF34 /* KeychainWrapper.swift */,
 				F7CBBE16236AAEA8002DDF34 /* ServiceError.swift */,
 				F7CBBE22236CAB48002DDF34 /* secrets.plist */,
 			);
@@ -547,6 +550,7 @@
 				F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */,
 				F7671BA3236D412C00C0470D /* WSMessage.swift in Sources */,
 				F7CBBDDC2367D780002DDF34 /* SceneDelegate.swift in Sources */,
+				F7671BDD236F8C8E00C0470D /* OAuthWkWebViewController.swift in Sources */,
 				F7671B9D236D412C00C0470D /* RemoteTransport.swift in Sources */,
 				F7671BBD236D5FCB00C0470D /* CurrencyService.swift in Sources */,
 				F7671BC1236DF91400C0470D /* DigitalAsset.swift in Sources */,

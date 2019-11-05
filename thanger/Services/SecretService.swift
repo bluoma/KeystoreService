@@ -12,6 +12,7 @@ import Foundation
 class SecretService {
     
     let dispatchQueue = DispatchQueue(label: "SecretServiceDispatchQueue")
+    
     //non-escaping closure, executes synchronously
     func fetchSecret(_ searchSecret: Secret, completion: ((Secret?, Error?) -> Void)) {
         

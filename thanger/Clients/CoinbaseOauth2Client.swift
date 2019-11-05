@@ -14,11 +14,6 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
 
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
      
-        
-        if request.requiresSession {
-            //add oauth access token to Authorization header
-        }
-        
         return super.buildUrl(withRequest: request)
     }
     
@@ -52,14 +47,14 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
                     let keyVal = "\(key)=\(val)"
                     bodyArray.append(keyVal)
                 }
-                var bodyString = bodyArray.joined(separator: "&")
+                let bodyString = bodyArray.joined(separator: "&")
                 dlog("bodyStringNotEncoded: \(bodyString)")
-                var allowed = CharacterSet.alphanumerics
-                allowed.insert(charactersIn: "-._~") // as per RFC 3986
-                if let percentEncoded = bodyString.addingPercentEncoding(withAllowedCharacters: allowed) {
-                    bodyString = percentEncoded
-                }
-                dlog("bodyStringEncoded: \(bodyString)")
+                //var allowed = CharacterSet.alphanumerics
+                //allowed.insert(charactersIn: "-._~") // as per RFC 3986
+                //if let percentEncoded = bodyString.addingPercentEncoding(withAllowedCharacters: allowed) {
+                    //bodyString = percentEncoded
+                //}
+                //dlog("bodyStringEncoded: \(bodyString)")
                 if let data = bodyString.data(using: .utf8) {
                     theUrlRequest.httpBody = data
                     urlRequest = theUrlRequest
@@ -73,6 +68,10 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
             }
         }
        
+        
+        if request.requiresSession {
+            //add oauth access token to Authorization header
+        }
         if !headers.isEmpty {
             urlRequest?.allHTTPHeaderFields = headers
         }

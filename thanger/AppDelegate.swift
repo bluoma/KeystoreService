@@ -70,8 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dlog("secrets.plist: \(secretsPlist)")
         
-        let clientIdSecret = Secret(secretKey: SecretKeys.coinbaseClientIdKey, secretVal: clientId, secretType: .clientId)
-        let clientSecretSecret = Secret(secretKey: SecretKeys.coinbaseClientSecretKey, secretVal: clientSecret, secretType: .clientSecret)
+        let clientIdSecret = Secret(secretKey: SecretKeys.coinbaseClientIdKey, secretType: .string, secretValue: clientId)
+        
+        let clientSecretSecret = Secret(secretKey: SecretKeys.coinbaseClientSecretKey, secretType: .string, secretValue: clientSecret)
         
         secretService.storeSecret(clientIdSecret) { (secret: Secret?, error: Error?) in
             

@@ -24,7 +24,7 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
     
     let secretType: SecretType
     let secretKey: String
-    let secretVal: String
+    let secretValue: Any?
     let service: String
     let accessGroup: String?
     let method: SecretRequestMethod
@@ -34,15 +34,15 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
         self.method = method
         self.secretType = secretType
         self.secretKey = secretKey
-        self.secretVal = ""
+        self.secretValue = nil
         self.service = service
         self.accessGroup = accessGroup
     }
     
-    init(withMethod method: SecretRequestMethod, secretType: SecretType, secretKey: String, secretVal: String, service: String, accessGroup: String? = nil) {
+    init(withMethod method: SecretRequestMethod, secretType: SecretType, secretKey: String, secretValue: Any?, service: String, accessGroup: String? = nil) {
         self.method = method
         self.secretType = secretType
-        self.secretVal = secretVal
+        self.secretValue = secretValue
         self.secretKey = secretKey
         self.service = service
         self.accessGroup = accessGroup
@@ -57,7 +57,7 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
     
     class func storeSecretRequest(withSecret secret: Secret) -> SecretRequest {
         
-        let request = SecretRequest(withMethod: .store, secretType: secret.secretType, secretKey: secret.secretKey, secretVal: secret.secretVal, service: sharedKeychainService, accessGroup: sharedKeychainGroup)
+        let request = SecretRequest(withMethod: .store, secretType: secret.secretType, secretKey: secret.secretKey, secretValue: secret.secretValue, service: sharedKeychainService, accessGroup: sharedKeychainGroup)
         
         return request
     }
@@ -76,7 +76,7 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
         return request
     }
     
-    //methods that don't take a closure argument, but return a tuple
+    //methods return a tuple, rather than executing a closure
     func load() -> (Secret?, Error?) {
         dlog("load")
         
@@ -117,7 +117,7 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
     func store() -> (Secret?, Error?) {
         dlog("store")
         var result: (s: Secret?, e: Error?)
-        let secretToStore = Secret(secretKey: secretKey, secretVal: secretVal, secretType: secretType)
+        let secretToStore = Secret(secretKey: secretKey, secretType: secretType, secretValue: secretValue)
         
         do {
             let encoder = JSONEncoder()

@@ -93,20 +93,25 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
         }
     }
     
-    //expects json Content-Type
+    //expects json or form Content-Type
     @discardableResult
     func send(urlRequest request: URLRequest, completion: @escaping RemoteTransportCompletionHandler) -> Any? {
         
         if let data = request.httpBody {
             
-            do {
-                let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                dlog("posting jsonObj type: \(type(of: jsonObj)), content: \(jsonObj)")
+            if let contentType = request.allHTTPHeaderFields?["Content-Type"] {
+                
+                //validate, TODO, call failure block on error
+                if contentType == "application/json" {
+                    do {
+                        let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        dlog("posting jsonObj type: \(type(of: jsonObj)), content: \(jsonObj)")
+                    }
+                    catch {
+                        dlog("error: \(error)")
+                    }
+                }
             }
-            catch {
-                dlog("error: \(error)")
-            }
-            
         }
         
         let dataTask = session.dataTask(with: request, completionHandler:
