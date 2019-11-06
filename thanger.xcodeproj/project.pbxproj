@@ -10,6 +10,10 @@
 		26D079EDD05F88D4B4304055 /* Pods_thanger_thangerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52FC683CAAFA0FC47CE7E132 /* Pods_thanger_thangerTests.framework */; };
 		5768066273C46977F5524F9B /* Pods_thanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 362BEDDB4E1C43285B33FBD2 /* Pods_thanger.framework */; };
 		E6CDCEFCFF116C270A4DFBFA /* Pods_thanger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7671BB7236D567100C0470D /* Pods_thanger.framework */; };
+		F73EB15E237238290063536F /* SecretBis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73EB15D237238290063536F /* SecretBis.swift */; };
+		F73EB15F237238290063536F /* SecretBis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73EB15D237238290063536F /* SecretBis.swift */; };
+		F73EB161237280680063536F /* CoinbaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73EB160237280680063536F /* CoinbaseUser.swift */; };
+		F73EB162237280680063536F /* CoinbaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73EB160237280680063536F /* CoinbaseUser.swift */; };
 		F7671B89236D0A2200C0470D /* PriceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B88236D0A2200C0470D /* PriceRequest.swift */; };
 		F7671B8B236D0A8A00C0470D /* RemoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */; };
 		F7671B8C236D0A8A00C0470D /* RemoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */; };
@@ -106,6 +110,8 @@
 		52FC683CAAFA0FC47CE7E132 /* Pods_thanger_thangerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_thanger_thangerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		668528FFED5E93E40209E44A /* Pods-thanger-thangerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger-thangerTests.release.xcconfig"; path = "Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests.release.xcconfig"; sourceTree = "<group>"; };
 		761FD098E97DF5B6954AED83 /* Pods-thanger-thangerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-thanger-thangerTests.debug.xcconfig"; path = "Target Support Files/Pods-thanger-thangerTests/Pods-thanger-thangerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F73EB15D237238290063536F /* SecretBis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretBis.swift; sourceTree = "<group>"; };
+		F73EB160237280680063536F /* CoinbaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinbaseUser.swift; sourceTree = "<group>"; };
 		F7671B88236D0A2200C0470D /* PriceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRequest.swift; sourceTree = "<group>"; };
 		F7671B8A236D0A8A00C0470D /* RemoteRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteRequest.swift; sourceTree = "<group>"; };
 		F7671B8E236D408100C0470D /* RemoteClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteClient.swift; sourceTree = "<group>"; };
@@ -292,6 +298,8 @@
 				F7CBBE28236CDA7A002DDF34 /* ExchangeRates.swift */,
 				F7FCBEC0236CFFF900E70A75 /* Price.swift */,
 				F7671BC0236DF91400C0470D /* DigitalAsset.swift */,
+				F73EB15D237238290063536F /* SecretBis.swift */,
+				F73EB160237280680063536F /* CoinbaseUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 				F7671B8B236D0A8A00C0470D /* RemoteRequest.swift in Sources */,
 				F7671B91236D408100C0470D /* RemoteClient.swift in Sources */,
 				F7671BB5236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
+				F73EB161237280680063536F /* CoinbaseUser.swift in Sources */,
 				F7CBBDDE2367D780002DDF34 /* ViewController.swift in Sources */,
 				F7671BBB236D5E2E00C0470D /* CurrencyRequest.swift in Sources */,
 				F7671BC4236E800200C0470D /* UserAccountRequest.swift in Sources */,
@@ -546,6 +555,7 @@
 				F7CBBDDA2367D780002DDF34 /* AppDelegate.swift in Sources */,
 				F7671BA1236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
 				F7671BA5236D412C00C0470D /* WSNativeTransport.swift in Sources */,
+				F73EB15E237238290063536F /* SecretBis.swift in Sources */,
 				F7CBBE14236A9AE3002DDF34 /* KeychainWrapper.swift in Sources */,
 				F7CBBE17236AAEA9002DDF34 /* ServiceError.swift in Sources */,
 				F7671BA3236D412C00C0470D /* WSMessage.swift in Sources */,
@@ -568,10 +578,12 @@
 				F7671BB6236D4B7500C0470D /* CoinbaseHttpClient.swift in Sources */,
 				F7671BC5236E800200C0470D /* UserAccountRequest.swift in Sources */,
 				F7671BA2236D412C00C0470D /* JsonHttpTransport.swift in Sources */,
+				F73EB162237280680063536F /* CoinbaseUser.swift in Sources */,
 				F7671BAE236D436700C0470D /* NetworkPlatform.swift in Sources */,
 				F7671B92236D408100C0470D /* RemoteClient.swift in Sources */,
 				F7CBBE18236AAEA9002DDF34 /* ServiceError.swift in Sources */,
 				F7CBBDFD23689ECD002DDF34 /* thangerTests.swift in Sources */,
+				F73EB15F237238290063536F /* SecretBis.swift in Sources */,
 				F7CBBE0E23690B10002DDF34 /* Secret.swift in Sources */,
 				F7CBBE2A236CDA7A002DDF34 /* ExchangeRates.swift in Sources */,
 				F7671BD5236EADC100C0470D /* UserAuthRequest.swift in Sources */,

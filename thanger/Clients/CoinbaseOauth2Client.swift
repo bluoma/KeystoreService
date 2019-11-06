@@ -11,7 +11,9 @@ import Foundation
 
 class CoinbaseOauth2Client: CoinbaseHttpClient {
     
-
+    let secretService = SecretService()
+    var expiredDict: [RemoteRequest: URLRequest] = [:]
+    
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
      
         return super.buildUrl(withRequest: request)
@@ -71,6 +73,26 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
         
         if request.requiresSession {
             //add oauth access token to Authorization header
+            let searchSecret = Secret(secretKey: SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred)
+            var error: Error?
+            var secret: Secret?
+            secretService.fetchSecret(searchSecret) { (s: Secret?, e: Error?) in
+                secret = s
+                error = e
+            }
+            guard let foundSecret = secret, let cred = foundSecret.secretValue as? OAuth2Credential else {
+                dlog("error fetching authToken: \(String(describing: error))")
+                return nil
+            }
+            guard !cred.isExpired else {
+                if !headers.isEmpty {
+                    theUrlRequest.allHTTPHeaderFields = headers
+                }
+                expiredDict[request] = theUrlRequest
+                return nil
+            }
+            headers["Authorization"] = "Bearer \(cred.accessToken)"
+            
         }
         if !headers.isEmpty {
             urlRequest?.allHTTPHeaderFields = headers

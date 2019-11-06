@@ -37,28 +37,6 @@ class UserAuthRequest: RemoteRequest {
         return request
     }
     
-    class func createAuthTokenRequest(withAuthCode authCode: String, clientId: String, clientSecret: String, redirectUri: String) -> UserAuthRequest {
-        
-        let request = UserAuthRequest()
-        request.isTransportable = true
-        request.method = HTTPMethod.post.rawValue
-        request.contentType = "application/x-www-form-urlencoded"
-        request.appendPath("token")
-        request.contentBody["grant_type"] = "authorization_code"
-        request.contentBody["code"] = authCode
-        request.contentBody["client_id"] = clientId
-        request.contentBody["client_secret"] = clientSecret
-        if let encodedUri = redirectUri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            request.contentBody["redirect_uri"] = encodedUri
-        }
-        else {
-            request.contentBody["redirect_uri"] = redirectUri
-        }
-        
-        
-        return request
-    }
-    
     override var description: String {
         return Self.staticName
     }

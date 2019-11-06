@@ -122,37 +122,9 @@ extension Secret: Decodable {
             throw error
         }
     }
-    
 }
 
-class SecretBis<V: Codable>: Codable, CustomStringConvertible, Hashable {
-    
-    var secretKey: String
-    var secretType: SecretType
-    var secretValue: V?
-    
-    init(secretKey: String, secretType: SecretType, secretValue: V?) {
-        self.secretKey = secretKey
-        self.secretType = secretType
-        self.secretValue = secretValue
-    }
-    
-    var description: String {
-        return "key: \(secretKey), type: \(secretType), val: \(String(describing: secretValue))"
-    }
-    
-    static func ==(lhs: SecretBis, rhs: SecretBis) -> Bool {
-        return lhs.secretKey == rhs.secretKey
-            && lhs.secretType == rhs.secretType
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(secretKey)
-        hasher.combine(secretType)
-    }
-}
-
-struct OAuth2Credential: CustomStringConvertible {
+struct OAuth2Credential: CustomStringConvertible, Equatable {
     
     let accessToken: String
     let refreshToken: String

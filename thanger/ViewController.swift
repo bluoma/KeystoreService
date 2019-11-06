@@ -22,7 +22,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        
+        userAccountService.getCurrentUser { (user: User?, error: Error?) in
+            if let user = user {
+                dlog("user: \(user)")
+            }
+            else if let error = error {
+                dlog("error: \(error)")
+            }
+        }
     }
     
     
@@ -32,7 +39,7 @@ class ViewController: UIViewController {
     
     func showWkWebView() {
         
-        guard let wkRequest = userAccountService.createAuthorizationCodeRequest(),
+        guard let wkRequest = userAccountService.createAuthorizationCodeRequest(withRedirectUrl: coinbaseOAuth2RedirectUri),
             let url = wkRequest.url else {
             dlog("error getting request")
             return
@@ -59,7 +66,7 @@ class ViewController: UIViewController {
     
     func showSafari() {
         
-        guard let sfRequest = userAccountService.createAuthorizationCodeRequest(),
+        guard let sfRequest = userAccountService.createAuthorizationCodeRequest(withRedirectUrl: coinbaseOAuth2RedirectUri),
             let url = sfRequest.url else {
             dlog("error getting sfrequest")
             return
@@ -112,13 +119,27 @@ extension ViewController: OAuthWkWebViewControllerDelegate{
         self.dismiss(animated: true, completion: nil)
         dlog("code: \(String(describing: authCode))")
         
-        userAccountService.createAuthToken(withAuthCode: authCode) { (authToken: Secret?, error: Error?) in
+        userAccountService.createAccessToken(withAuthCode: authCode) { [weak self] (cred: OAuth2Credential?, error: Error?) in
+            
+            guard let myself = self else { return }
             
             if let error = error {
                 dlog("error: \(error)")
             }
             else {
-                dlog("authToken: \(String(describing: authToken))")
+                dlog("oauthCred: \(String(describing: cred))")
+                guard let _ = cred else {
+                    return
+                }
+                
+                myself.userAccountService.getCurrentUser { (user: User?, uerror: Error?) in
+                    if let user = user {
+                        dlog("user: \(user)")
+                    }
+                    else if let uerror = uerror {
+                        dlog("error: \(uerror)")
+                    }
+                }
             }
         }
     }
