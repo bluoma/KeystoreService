@@ -11,8 +11,10 @@ import XCTest
 class thangerTests: XCTestCase {
 
     let secretService = SecretService()
+
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        NetworkPlatform.load()
     }
 
     override func tearDown() {
@@ -610,7 +612,7 @@ class thangerTests: XCTestCase {
         //https://www.coinbase.com/v2/oauth/authorize?scope=wallet:user:read,wallet:user:email,wallet:accounts:read&redirect_uri=thanger://com.bluoma.thanger/oauth/redir&client_secret=34cs&client_id=24ci&response_type=code&state=93C58288-82E7-4308-915B-3EC280195755
         let service = UserAccountService()
         
-        if let urlRequest = service.createAuthorizationCodeRequest() {
+        if let urlRequest = service.createAuthorizationCodeRequest(withRedirectUrl: coinbaseOAuth2RedirectUri) {
             dlog("url: \(String(describing: urlRequest.url))")
             dlog("host: \(String(describing: urlRequest.url?.host))")
 

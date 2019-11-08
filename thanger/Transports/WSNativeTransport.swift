@@ -31,7 +31,7 @@ class WSNativeTransport: NSObject, RemoteTransport {
     
     var connectBlock: (() -> Void)?
     var disconnectBlock: ((Error?) -> Void)?
-    var shouldRetryBlock: ((URLRequest, Bool) -> Void)?
+    var shouldRetryBlock: ((URLRequest, ServiceError) -> Void)?
 
     
     init(withBaseUrl url: URL) {

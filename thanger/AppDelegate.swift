@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let status = storeSecrets()
-        precondition(status > 0, "error loading secrets")
+        //let status = storeSecrets()
+        //precondition(status > 0, "error loading secrets")
         
         NetworkPlatform.load()
         

@@ -50,35 +50,35 @@ class SecretRequest<Keystore: SecretWrapper>: RequestProtocol {
     
     class func fetchSecretRequest(withSecret secret: Secret) -> SecretRequest {
         
-        let request = SecretRequest(withMethod: .load, secretType: secret.secretType, secretKey: secret.secretKey, service: sharedKeychainService, accessGroup: sharedKeychainGroup)
+        let request = SecretRequest(withMethod: .load, secretType: secret.secretType, secretKey: secret.secretKey, service: NetworkPlatform.sharedKeychainService, accessGroup: NetworkPlatform.sharedKeychainGroup)
                 
         return request
     }
     
     class func storeSecretRequest(withSecret secret: Secret) -> SecretRequest {
         
-        let request = SecretRequest(withMethod: .store, secretType: secret.secretType, secretKey: secret.secretKey, secretValue: secret.secretValue, service: sharedKeychainService, accessGroup: sharedKeychainGroup)
+        let request = SecretRequest(withMethod: .store, secretType: secret.secretType, secretKey: secret.secretKey, secretValue: secret.secretValue, service: NetworkPlatform.sharedKeychainService, accessGroup: NetworkPlatform.sharedKeychainGroup)
         
         return request
     }
     
     class func deleteSecretRequest(withSecret secret: Secret) -> SecretRequest {
         
-        let request = SecretRequest(withMethod: .delete, secretType: secret.secretType, secretKey: secret.secretKey, service: sharedKeychainService, accessGroup: sharedKeychainGroup)
+        let request = SecretRequest(withMethod: .delete, secretType: secret.secretType, secretKey: secret.secretKey, service: NetworkPlatform.sharedKeychainService, accessGroup: NetworkPlatform.sharedKeychainGroup)
         
         return request
     }
     
     class func deleteAllSecretsRequest() -> SecretRequest {
         
-        let request = SecretRequest(withMethod: .clear, secretType: .none, secretKey: "", service: sharedKeychainService, accessGroup: sharedKeychainGroup)
+        let request = SecretRequest(withMethod: .clear, secretType: .none, secretKey: "", service: NetworkPlatform.sharedKeychainService, accessGroup: NetworkPlatform.sharedKeychainGroup)
         
         return request
     }
     
     //methods return a tuple, rather than executing a closure
     func load() -> (Secret?, Error?) {
-        dlog("load")
+        dlog("load: \(secretKey)")
         
         var result: (s: Secret?, e: Error?)
         var data: Data?

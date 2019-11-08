@@ -25,7 +25,8 @@ class RemoteRequest: RequestProtocol, Hashable, CustomStringConvertible {
     var isTransportable: Bool = true
     var successBlock: RequestSuccessBlock?
     var failureBlock: RequestFailureBlock?
-    
+    var blockCalled: Bool = false
+    var retryCount: Int = 0
     
     init() {
         

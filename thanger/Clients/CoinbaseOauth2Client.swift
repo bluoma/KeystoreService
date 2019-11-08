@@ -12,7 +12,74 @@ import Foundation
 class CoinbaseOauth2Client: CoinbaseHttpClient {
     
     let secretService = SecretService()
-    var expiredDict: [RemoteRequest: URLRequest] = [:]
+    let userAccountService = UserAccountService()
+    
+    var retryContainer: Set<RemoteRequest> = []
+    var urlRequestDict: [String: (URLRequest, Error)] = [:]
+    
+    override init() {
+        super.init(withScheme: "https", host: "api.coinbase.com")
+        transport.shouldRetryBlock = retry(urlRequest:error:)
+    }
+    
+    override init(withScheme scheme: String, host: String, port: String = "") {
+        super.init(withScheme: scheme, host: host, port: port)
+        transport.shouldRetryBlock = retry(urlRequest:error:)
+    }
+    
+    
+    func handleRetrySend() {
+        
+        for remoteRequest in retryContainer {
+            let requestId = remoteRequest.requestId
+            guard let (_, error) = urlRequestDict[requestId] else { continue }
+            if !remoteRequest.blockCalled {
+                if remoteRequest.retryCount < 3 {
+                    dlog("resending remote request:\(requestId), \(remoteRequest.resourcePath)")
+                    remoteRequest.send()
+                    remoteRequest.retryCount += 1
+                }
+                else {
+                    remoteRequest.failureBlock?(error)
+                }
+            }
+            else {
+                dlog("remote request block already called requestId: \(requestId), \(remoteRequest.resourcePath)")
+            }
+            retryContainer.remove(remoteRequest)
+            urlRequestDict[requestId] = nil
+        }
+    }
+    
+    func refreshAccessToken() {
+        userAccountService.refreshAccessToken { [weak self] (recred: OAuth2Credential?, error: Error?) in
+                   
+            guard let myself = self else { return }
+            
+            guard error == nil else {
+                dlog("error refreshing accessToken: \(error!)")
+                //probably should retry this w backoff strategy
+                return
+            }
+            
+            guard let _ = recred else { return }
+            myself.handleRetrySend()
+        }
+    }
+    
+    func retry(urlRequest: URLRequest, error: ServiceError) -> Void {
+        
+        dlog("retry: \(String(describing: urlRequest.url)), error: \(error)")
+        
+        dlog("headers: \(String(describing: urlRequest.allHTTPHeaderFields)))")
+        
+        guard error.code == 401, let foundRequestId = urlRequest.value(forHTTPHeaderField: "requestId") else {
+            dlog("not a 401 or no reqeustId header, bailing")
+            return
+        }
+        urlRequestDict[foundRequestId] = (urlRequest, error)
+        refreshAccessToken()
+    }
     
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
      
@@ -22,7 +89,7 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
     override func buildUrlRequest(withRemoteRequest request: RemoteRequest) -> URLRequest? {
         
         var urlRequest: URLRequest?
-        
+        var localHeaders = headers
         guard let url = buildUrl(withRequest: request) else { return nil }
             
         var theUrlRequest = URLRequest(url: url)
@@ -38,7 +105,7 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
                     let data = try JSONSerialization.data(withJSONObject: request.contentBody, options: [])
                     theUrlRequest.httpBody = data
                     urlRequest = theUrlRequest
-                    headers["Content-Type"] = "application/json"
+                    localHeaders["Content-Type"] = "application/json"
                 }
                 catch {
                     dlog(String(describing: error))
@@ -60,7 +127,7 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
                 if let data = bodyString.data(using: .utf8) {
                     theUrlRequest.httpBody = data
                     urlRequest = theUrlRequest
-                    headers["Content-Type"] = "application/x-www-form-urlencoded"
+                    localHeaders["Content-Type"] = "application/x-www-form-urlencoded"
                 }
                 else {
                     assert(false, "bad post body: \(bodyString)")
@@ -84,18 +151,13 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
                 dlog("error fetching authToken: \(String(describing: error))")
                 return nil
             }
-            guard !cred.isExpired else {
-                if !headers.isEmpty {
-                    theUrlRequest.allHTTPHeaderFields = headers
-                }
-                expiredDict[request] = theUrlRequest
-                return nil
+            if cred.isExpired { //likely need to resend, but hard to stop it now
+                retryContainer.insert(request)
             }
-            headers["Authorization"] = "Bearer \(cred.accessToken)"
-            
+            localHeaders["Authorization"] = "Bearer \(cred.accessToken)"
         }
-        if !headers.isEmpty {
-            urlRequest?.allHTTPHeaderFields = headers
+        if !localHeaders.isEmpty {
+            urlRequest?.allHTTPHeaderFields = localHeaders
         }
                 
         return urlRequest

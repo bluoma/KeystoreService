@@ -23,7 +23,7 @@ class WSStarscreamTransport: RemoteTransport {
     
     var connectBlock: (() -> Void)?
     var disconnectBlock: ((Error?) -> Void)?
-    var shouldRetryBlock: ((URLRequest, Bool) -> Void)?
+    var shouldRetryBlock: ((URLRequest, ServiceError) -> Void)?
 
     fileprivate func configureWebsocket() {
         socket.respondToPingWithPong = true

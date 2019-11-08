@@ -16,6 +16,10 @@ class KeychainWrapper: SecretWrapper {
     required init(withService service: String, accessGroup: String? = nil) {
         self.service = service
         self.accessGroup = accessGroup
+        
+        dlog("service: \(self.service)")
+        dlog("group: \(String(describing: self.accessGroup))")
+
     }
     
     func load(key: String, value: inout Data?) -> Int {

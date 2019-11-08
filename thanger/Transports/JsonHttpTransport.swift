@@ -22,7 +22,7 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
     
     var connectBlock: (() -> Void)?
     var disconnectBlock: ((Error?) -> Void)?
-    var shouldRetryBlock: ((URLRequest, Bool) -> Void)?
+    var shouldRetryBlock: ((URLRequest, ServiceError) -> Void)?
 
     
     init() {
@@ -97,23 +97,6 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
     @discardableResult
     func send(urlRequest request: URLRequest, completion: @escaping RemoteTransportCompletionHandler) -> Any? {
         
-        if let data = request.httpBody {
-            
-            if let contentType = request.allHTTPHeaderFields?["Content-Type"] {
-                
-                //validate, TODO, call failure block on error
-                if contentType == "application/json" {
-                    do {
-                        let jsonObj = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-                        dlog("posting jsonObj type: \(type(of: jsonObj)), content: \(jsonObj)")
-                    }
-                    catch {
-                        dlog("error: \(error)")
-                    }
-                }
-            }
-        }
-        
         let dataTask = session.dataTask(with: request, completionHandler:
         { [weak self] (data: Data?, response: URLResponse?, error: Error?) -> Void in
             
@@ -142,7 +125,13 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
                     msg = errStr
                 }
                 let error = ServiceError(type: .httpServer, code: statusCode, msg: msg)
-                myself.handleCompletion(nil, nil, error, completion)
+                if statusCode == 401, let retryBlock = myself.shouldRetryBlock {
+                    retryBlock(request, error)
+                }
+                else {
+                    myself.handleCompletion(nil, nil, error, completion)
+                }
+                
             }
             else if let foundData = data {
                 if (contentType.contains("json")) { //success

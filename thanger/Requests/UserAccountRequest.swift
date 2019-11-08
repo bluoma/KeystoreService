@@ -20,6 +20,7 @@ class UserAccountRequest: RemoteRequest {
         
         let request = UserAccountRequest()
         request.isTransportable = true
+        request.requiresSession = false
         request.version = ""
         request.method = HTTPMethod.post.rawValue
         request.contentType = "application/x-www-form-urlencoded"
@@ -42,6 +43,7 @@ class UserAccountRequest: RemoteRequest {
         
         let request = UserAccountRequest()
         request.isTransportable = true
+        request.requiresSession = false
         request.version = ""
         request.method = HTTPMethod.post.rawValue
         request.contentType = "application/x-www-form-urlencoded"
