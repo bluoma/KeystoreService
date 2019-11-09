@@ -21,7 +21,7 @@ protocol RemoteTransport {
     
     var connectBlock: (() -> Void)? { get set }
     var disconnectBlock: ((Error?) -> Void)? { get set }
-    var shouldRetryBlock: ((URLRequest, ServiceError) -> Void)? { get set }
+    var shouldRetryBlock: ((String, ServiceError) -> Void)? { get set }
     
     func connect()
     func disconnect()

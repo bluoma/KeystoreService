@@ -22,7 +22,7 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
     
     var connectBlock: (() -> Void)?
     var disconnectBlock: ((Error?) -> Void)?
-    var shouldRetryBlock: ((URLRequest, ServiceError) -> Void)?
+    var shouldRetryBlock: ((String, ServiceError) -> Void)?
 
     
     init() {
@@ -125,8 +125,9 @@ class JsonHttpTransport: RemoteTransport, CustomStringConvertible {
                     msg = errStr
                 }
                 let error = ServiceError(type: .httpServer, code: statusCode, msg: msg)
-                if statusCode == 401, let retryBlock = myself.shouldRetryBlock {
-                    retryBlock(request, error)
+                if statusCode == 401, let retryBlock = myself.shouldRetryBlock,
+                    let requestId = request.value(forHTTPHeaderField: "requestId") {
+                    retryBlock(requestId, error)
                 }
                 else {
                     myself.handleCompletion(nil, nil, error, completion)

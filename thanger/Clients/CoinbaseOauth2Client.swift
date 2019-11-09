@@ -13,72 +13,133 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
     
     let secretService = SecretService()
     let userAccountService = UserAccountService()
-    
-    var retryContainer: Set<RemoteRequest> = []
-    var urlRequestDict: [String: (URLRequest, Error)] = [:]
+    let maxRetryCount = 3
+    var urlRequestDict: [String: Error] = [:]
     
     override init() {
         super.init(withScheme: "https", host: "api.coinbase.com")
-        transport.shouldRetryBlock = retry(urlRequest:error:)
+        transport.shouldRetryBlock = retry(requestId:error:)
     }
     
     override init(withScheme scheme: String, host: String, port: String = "") {
         super.init(withScheme: scheme, host: host, port: port)
-        transport.shouldRetryBlock = retry(urlRequest:error:)
+        transport.shouldRetryBlock = retry(requestId:error:)
     }
     
+    fileprivate func getAccessToken() -> OAuth2Credential? {
+        var error: Error?
+        var secret: Secret?
+        let searchSecret = Secret(secretKey: SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred)
+
+        self.secretService.fetchSecret(searchSecret) { (s: Secret?, e: Error?) in
+            secret = s
+            error = e
+        }
+        guard let foundSecret = secret, let cred = foundSecret.secretValue as? OAuth2Credential else {
+            dlog("error fetching authToken: \(String(describing: error))")
+            return nil
+        }
+        return cred
+    }
     
-    func handleRetrySend() {
+    func handleRetrySend(forRequestId requestId: String) {
         
-        for remoteRequest in retryContainer {
-            let requestId = remoteRequest.requestId
-            guard let (_, error) = urlRequestDict[requestId] else { continue }
-            if !remoteRequest.blockCalled {
-                if remoteRequest.retryCount < 3 {
-                    dlog("resending remote request:\(requestId), \(remoteRequest.resourcePath)")
-                    remoteRequest.send()
-                    remoteRequest.retryCount += 1
-                }
-                else {
-                    remoteRequest.failureBlock?(error)
-                }
+        guard let remoteRequest = NetworkPlatform.shared.request(forId: requestId) else {
+            dlog("no request for id: \(requestId)")
+            urlRequestDict[requestId] = nil
+            assert(false, "no request for id: \(requestId)")
+            return
+        }
+        
+        if !remoteRequest.blockCalled {
+            if remoteRequest.retryCount < maxRetryCount {
+                dlog("resending remote request:\(requestId), \(remoteRequest.resourcePath)")
+                remoteRequest.send()
+                remoteRequest.retryCount += 1
             }
             else {
-                dlog("remote request block already called requestId: \(requestId), \(remoteRequest.resourcePath)")
+                guard let error = urlRequestDict[requestId] else { return }
+                remoteRequest.failureBlock?(error)
+                remoteRequest.blockCalled = true
+                NetworkPlatform.shared.removeRequest(forId: requestId)
             }
-            retryContainer.remove(remoteRequest)
-            urlRequestDict[requestId] = nil
         }
+        else {
+            dlog("remote request block already called requestId: \(requestId), \(remoteRequest.resourcePath)")
+            NetworkPlatform.shared.removeRequest(forId: requestId)
+        }
+
+        urlRequestDict[requestId] = nil
     }
     
-    func refreshAccessToken() {
+    func handleRetryFailure(forRequestId requestId: String) {
+        
+        guard let remoteRequest = NetworkPlatform.shared.request(forId: requestId),
+            let error = urlRequestDict[requestId] else {
+            dlog("no request for id: \(requestId)")
+            urlRequestDict[requestId] = nil
+            return
+        }
+        
+        defer {
+            NetworkPlatform.shared.removeRequest(forId: requestId)
+        }
+        
+        guard remoteRequest.blockCalled == false else { return }
+        remoteRequest.failureBlock?(error)
+        remoteRequest.blockCalled = true
+        urlRequestDict[requestId] = nil
+    }
+    
+    func refreshAccessToken(forRequestId requestId: String) {
+        
         userAccountService.refreshAccessToken { [weak self] (recred: OAuth2Credential?, error: Error?) in
                    
             guard let myself = self else { return }
             
             guard error == nil else {
                 dlog("error refreshing accessToken: \(error!)")
-                //probably should retry this w backoff strategy
+                //TODO probably should retry this w backoff strategy
+                self?.handleRetryFailure(forRequestId: requestId)
                 return
             }
             
-            guard let _ = recred else { return }
-            myself.handleRetrySend()
+            guard let _ = recred else {
+                assert(false, "we should have cred if error is nil")
+                return
+            }
+            
+            DispatchQueue.main.async {
+                myself.handleRetrySend(forRequestId: requestId)
+            }
         }
     }
     
-    func retry(urlRequest: URLRequest, error: ServiceError) -> Void {
+    func retry(requestId: String, error: ServiceError) -> Void {
         
-        dlog("retry: \(String(describing: urlRequest.url)), error: \(error)")
+        dlog("retry: error: \(error)")
         
-        dlog("headers: \(String(describing: urlRequest.allHTTPHeaderFields)))")
-        
-        guard error.code == 401, let foundRequestId = urlRequest.value(forHTTPHeaderField: "requestId") else {
-            dlog("not a 401 or no reqeustId header, bailing")
+        guard error.code == 401 else {
+            dlog("not a 401 or no requestId header, bailing")
+            self.handleRetryFailure(forRequestId: requestId)
             return
         }
-        urlRequestDict[foundRequestId] = (urlRequest, error)
-        refreshAccessToken()
+        DispatchQueue.main.async { [weak self] in
+            self?.urlRequestDict[requestId] = error
+            
+            if let cred = self?.getAccessToken() {
+                if cred.isExpired {
+                    self?.refreshAccessToken(forRequestId: requestId)
+                }
+                else {
+                    self?.handleRetrySend(forRequestId: requestId)
+                }
+            }
+            else {
+                //TODO need user to login, send notification?
+                self?.handleRetryFailure(forRequestId: requestId)
+            }
+        }
     }
     
     override func buildUrl(withRequest request: RemoteRequest) -> URL? {
@@ -137,24 +198,15 @@ class CoinbaseOauth2Client: CoinbaseHttpClient {
             }
         }
        
-        
         if request.requiresSession {
             //add oauth access token to Authorization header
-            let searchSecret = Secret(secretKey: SecretKeys.coinbaseOAuthCredentialKey, secretType: .oauthCred)
-            var error: Error?
-            var secret: Secret?
-            secretService.fetchSecret(searchSecret) { (s: Secret?, e: Error?) in
-                secret = s
-                error = e
+            if let cred = getAccessToken() {
+                localHeaders["Authorization"] = "Bearer \(cred.accessToken)"
             }
-            guard let foundSecret = secret, let cred = foundSecret.secretValue as? OAuth2Credential else {
-                dlog("error fetching authToken: \(String(describing: error))")
+            else {
+                dlog("no session, bailing")
                 return nil
             }
-            if cred.isExpired { //likely need to resend, but hard to stop it now
-                retryContainer.insert(request)
-            }
-            localHeaders["Authorization"] = "Bearer \(cred.accessToken)"
         }
         if !localHeaders.isEmpty {
             urlRequest?.allHTTPHeaderFields = localHeaders

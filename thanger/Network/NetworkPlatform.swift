@@ -20,6 +20,8 @@ class NetworkPlatform {
     fileprivate var requestClientDict: [String: RemoteClient] = [:]
     fileprivate var requestTaskDict: [RemoteRequest: Any] = [:]
     fileprivate let requestTaskDictLock = NSLock()
+    fileprivate var requestDict: [String: RemoteRequest] = [:]
+    fileprivate let requestDictLock = NSLock()
     fileprivate let secretService = SecretService()
     static var appPrefix: String = ""
     static var sharedKeychainService: String = ""
@@ -233,7 +235,7 @@ class NetworkPlatform {
         return requestClientDict[name]
     }
     
-    func taskForRequest(_ request: RemoteRequest) -> Any? {
+    func task(forRequest request: RemoteRequest) -> Any? {
         requestTaskDictLock.lock()
         defer {
             requestTaskDictLock.unlock()
@@ -251,6 +253,27 @@ class NetworkPlatform {
         requestTaskDictLock.lock()
         requestTaskDict[request] = nil
         requestTaskDictLock.unlock()
+    }
+    
+    func request(forId requestId: String) -> RemoteRequest? {
+        requestDictLock.lock()
+        defer {
+            requestDictLock.unlock()
+        }
+        return requestDict[requestId]
+    }
+    
+    func addRequest(_ request: RemoteRequest, forId requestId: String) {
+        requestDictLock.lock()
+        requestDict[requestId] = request
+        requestDictLock.unlock()
+    }
+    
+    func removeRequest(forId requestId: String) {
+        requestDictLock.lock()
+        requestDict[requestId] = nil
+        requestDictLock.unlock()
+
     }
     
     func send(remoteRequest: RemoteRequest) -> Any? {
@@ -277,6 +300,8 @@ class NetworkPlatform {
             return urlRequest
         }
         
+        addRequest(remoteRequest, forId: remoteRequest.requestId)
+        
         //forward to client 
         let task = client.send(urlRequest: urlRequest, completion: {
             [weak self] (data: Data?, headers: [AnyHashable: Any], error: Error?) in
@@ -296,6 +321,7 @@ class NetworkPlatform {
                 }
             }
             myself.removeTask(forRequest: remoteRequest)
+            myself.removeRequest(forId: remoteRequest.requestId)
         })
         
         if let foundtask = task {
